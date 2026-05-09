@@ -42,7 +42,7 @@ body {
   background: var(--white);
   box-shadow: 0 0 80px rgba(0,0,0,0.12);
   position: relative;
-  overflow: hidden;
+  overflow-x: clip;
 }
 
 /* ── TYPOGRAPHY ── */
@@ -313,16 +313,17 @@ hr.divider {
 .carousel-wrapper {
   position: relative;
   overflow: hidden;
-  margin: 48px -80px 0;
+  margin: 48px 0 0;
   padding: 0 0 24px;
-  /* fade edges */
   -webkit-mask: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   mask: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 .carousel-track {
-  display: flex; gap: 24px;
+  display: flex;
+  gap: 24px;
   width: max-content;
-  animation: autoScroll 32s linear infinite;
+  will-change: transform;
+  animation: autoScroll 36s linear infinite;
 }
 .carousel-track:hover { animation-play-state: paused; }
 
@@ -833,7 +834,7 @@ select.form-input { cursor:pointer; }
   .footer-top { grid-template-columns:1fr; gap:32px; padding:40px 24px 32px; }
   .footer-bottom { padding:16px 24px; flex-direction:column; gap:8px; }
   .section,.portfolio-inner,.clients-inner,#cta { padding-inline:24px; }
-  .carousel-wrapper { margin:40px -24px 0; padding:0 24px 20px; }
+  .carousel-wrapper { margin:40px 0 0; }
   .reel-card { flex:0 0 175px; }
   .reel-phone { width:175px; height:312px; border-radius:20px; }
   nav { display:none; }
@@ -1006,9 +1007,8 @@ select.form-input { cursor:pointer; }
     </div>
     <h2 class="section-title fade-up"><em style="font-style:italic;color:var(--red);font-family:'Noto Serif Hebrew',serif;">דוגמאות</em> מהשטח</h2>
   </div>
-  <div class="carousel-wrapper" style="max-width:100%;overflow:hidden;">
-    <div style="overflow:hidden;margin:48px 0 0;" id="carouselOuter">
-      <div class="carousel-track" id="carouselTrack">
+  <div class="carousel-wrapper">
+    <div class="carousel-track" id="carouselTrack">
         <!-- Set A -->
         <div class="reel-card" onclick="trackEvent('reel_click','ארומה')">
           <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#1a0a00,#3d1200,#000)"><div class="reel-overlay-text"><div class="reel-client">ארומה</div><div class="reel-desc">קמפיין לאנצ׳ מוצר חדש</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
@@ -1072,10 +1072,9 @@ select.form-input { cursor:pointer; }
           <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0000,#2d0000,#000)"><div class="reel-overlay-text"><div class="reel-client">The Samurai</div><div class="reel-desc">קמפיין מיתוג עצמי</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
           <div class="reel-meta"><div class="reel-tag">מיתוג</div><div class="reel-stats"><span>3.2M</span> צפיות</div></div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+      </div><!-- /.carousel-track -->
+  </div><!-- /.carousel-wrapper -->
+</div><!-- /#portfolio -->
 
 <hr class="divider">
 
