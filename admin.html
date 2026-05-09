@@ -494,8 +494,13 @@ select option { background: var(--gray2); }
       <span>אדמין הסמוראי</span>
     </div>
 
-    <div class="sidebar-section">תוכן</div>
-    <div class="nav-item active" onclick="showPanel('reels')">
+    <div class="sidebar-section">ראשי</div>
+    <div class="nav-item active" onclick="showPanel('analytics')">
+      <span class="icon">📊</span> דשבורד
+    </div>
+
+    <div class="sidebar-section" style="margin-top:8px">תוכן</div>
+    <div class="nav-item" onclick="showPanel('reels')">
       <span class="icon">🎬</span> רילסים
     </div>
     <div class="nav-item" onclick="showPanel('hero')">
@@ -512,14 +517,14 @@ select option { background: var(--gray2); }
     </div>
 
     <div class="sidebar-section" style="margin-top:8px">כלים</div>
-    <div class="nav-item" onclick="showPanel('analytics')">
-      <span class="icon">📊</span> סטטיסטיקות
-    </div>
     <div class="nav-item" onclick="showPanel('export')">
       <span class="icon">💾</span> ייצוא האתר
     </div>
 
     <div class="sidebar-bottom">
+      <a href="../index.html" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px 12px;margin-bottom:10px;border:1px solid var(--border);color:var(--off-white);text-decoration:none;font-size:13px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--off-white)'">
+        <span>🌐</span> צפה באתר
+      </a>
       <div style="font-size:11px; color: var(--light-gray); margin-bottom:10px; letter-spacing:1px;">
         THESAMURAI.RO
       </div>
@@ -531,7 +536,7 @@ select option { background: var(--gray2); }
   <div class="main">
 
     <!-- ══ REELS PANEL ══ -->
-    <div class="panel active" id="panel-reels">
+    <div class="panel" id="panel-reels">
       <div class="page-header">
         <div>
           <div class="page-title">🎬 ניהול רילסים</div>
@@ -786,11 +791,11 @@ select option { background: var(--gray2); }
     </div>
 
     <!-- ══ ANALYTICS PANEL ══ -->
-    <div class="panel" id="panel-analytics">
+    <div class="panel active" id="panel-analytics">
       <div class="page-header">
         <div>
-          <div class="page-title">📊 סטטיסטיקות</div>
-          <div class="page-sub">מי ביקר, מה הם ראו, ואיפה הם לחצו</div>
+          <div class="page-title">📊 דשבורד</div>
+          <div class="page-sub">סטטיסטיקות האתר בזמן אמת</div>
         </div>
         <div style="display:flex;gap:12px;align-items:center;">
           <button class="btn btn-outline btn-sm" onclick="refreshAnalytics()">↻ רענן</button>
@@ -981,7 +986,7 @@ const DEFAULT_DATA = {
 // STATE
 // ════════════════════════════════════════════════
 let siteData = {};
-let currentPanel = 'reels';
+let currentPanel = 'analytics';
 let unsavedChanges = false;
 let selectedFile = null;
 let selectedFileType = null;
@@ -998,6 +1003,7 @@ function init() {
   renderValues();
   renderWhyItems();
   loadFormValues();
+  renderAnalytics();
 }
 
 function loadFormValues() {
