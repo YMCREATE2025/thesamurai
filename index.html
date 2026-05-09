@@ -328,7 +328,7 @@ hr.divider {
 
 @keyframes autoScroll {
   0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-33.333%); }
 }
 
 .reel-card {
@@ -1051,6 +1051,27 @@ select.form-input { cursor:pointer; }
           <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0000,#2d0000,#000)"><div class="reel-overlay-text"><div class="reel-client">The Samurai</div><div class="reel-desc">קמפיין מיתוג עצמי</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
           <div class="reel-meta"><div class="reel-tag">מיתוג</div><div class="reel-stats"><span>3.2M</span> צפיות</div></div>
         </div>
+        <!-- Set C (third copy for extra buffer) -->
+        <div class="reel-card" onclick="trackEvent('reel_click','ארומה')">
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#1a0a00,#3d1200,#000)"><div class="reel-overlay-text"><div class="reel-client">ארומה</div><div class="reel-desc">קמפיין לאנצ׳ מוצר חדש</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">מזון ומשקאות</div><div class="reel-stats"><span>2.4M</span> צפיות</div></div>
+        </div>
+        <div class="reel-card" onclick="trackEvent('reel_click','ENOVA')">
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#000a1a,#002244,#000)"><div class="reel-overlay-text"><div class="reel-client">ENOVA</div><div class="reel-desc">סדרת תוכן מומחיות</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">ליווי עסקי</div><div class="reel-stats"><span>870K</span> צפיות</div></div>
+        </div>
+        <div class="reel-card" onclick="trackEvent('reel_click','שבירו')">
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0a00,#2a2200,#000)"><div class="reel-overlay-text"><div class="reel-client">שבירו</div><div class="reel-desc">וידאו נדל״ן פרויקט חדש</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">נדל״ן</div><div class="reel-stats"><span>1.1M</span> צפיות</div></div>
+        </div>
+        <div class="reel-card" onclick="trackEvent('reel_click','רם-מוגרבי')">
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0010,#1a0035,#000)"><div class="reel-overlay-text"><div class="reel-client">רם-מוגרבי</div><div class="reel-desc">בראנד סטוריטלינג</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">בוטיק</div><div class="reel-stats"><span>650K</span> צפיות</div></div>
+        </div>
+        <div class="reel-card" onclick="trackEvent('reel_click','The Samurai')">
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0000,#2d0000,#000)"><div class="reel-overlay-text"><div class="reel-client">The Samurai</div><div class="reel-desc">קמפיין מיתוג עצמי</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">מיתוג</div><div class="reel-stats"><span>3.2M</span> צפיות</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -1615,8 +1636,17 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     }
     const setA=reels.map((r,i)=>makeCard(r,i)).join('');
     const setB=reels.map((r,i)=>makeCard(r,i)).join('');
-    trk.innerHTML=setA+setB;
-    const speed=Math.max(20,reels.length*6);
+    const setC=reels.map((r,i)=>makeCard(r,i)).join('');
+    trk.innerHTML=setA+setB+setC;
+    trk.style.animationName='none'; // reset
+    requestAnimationFrame(()=>{
+      trk.style.animationName='autoScroll';
+      // Override keyframe dynamically for -33.333%
+      let style=document.getElementById('__carouselStyle');
+      if(!style){style=document.createElement('style');style.id='__carouselStyle';document.head.appendChild(style);}
+      style.textContent='@keyframes autoScroll{0%{transform:translateX(0)}100%{transform:translateX(-33.333%)}}';
+    });
+    const speed=Math.max(24,reels.length*7);
     trk.style.animationDuration=speed+'s';
   }
 })();
