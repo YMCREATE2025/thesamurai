@@ -521,6 +521,7 @@ select option { background: var(--gray2); }
       <span class="icon">💾</span> ייצוא האתר
     </div>
 
+    <div id="saveStatus" style="text-align:center;font-size:11px;color:var(--light-gray);padding:6px 12px;margin:0 0 4px;">מחבר לענן...</div>
     <div class="sidebar-bottom">
       <a href="../index.html" target="_blank" style="display:flex;align-items:center;gap:8px;padding:10px 12px;margin-bottom:10px;border:1px solid var(--border);color:var(--off-white);text-decoration:none;font-size:13px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--off-white)'">
         <span>🌐</span> צפה באתר
@@ -662,9 +663,18 @@ select option { background: var(--gray2); }
       <div class="page-header">
         <div>
           <div class="page-title">✍️ עריכת כל הטקסטים</div>
-          <div class="page-sub">שליטה מלאה על כל טקסט באתר</div>
+          <div class="page-sub">שליטה מלאה על כל טקסט באתר — שינויים מתעדכנים בשתי השפות</div>
         </div>
-        <button class="btn btn-green" onclick="saveTexts()">💾 שמור הכל</button>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <div style="display:flex;gap:4px;background:var(--gray);padding:4px;border-radius:6px;">
+            <button id="adminLangRO" class="btn btn-red btn-sm" onclick="setAdminLang('ro')" style="min-width:40px;">🇷🇴 RO</button>
+            <button id="adminLangEN" class="btn btn-outline btn-sm" onclick="setAdminLang('en')" style="min-width:40px;">🇬🇧 EN</button>
+          </div>
+          <button class="btn btn-green" onclick="saveTexts()">💾 שמור הכל</button>
+        </div>
+      </div>
+      <div id="adminLangBanner" style="background:var(--red);color:white;padding:8px 16px;font-size:13px;border-radius:6px;margin-bottom:16px;display:none;">
+        ✏️ עורך עכשיו: <strong id="adminLangName">רומנית</strong> — השינויים יעודכנו ישירות באתר
       </div>
 
       <div class="tabs">
@@ -1012,6 +1022,37 @@ select option { background: var(--gray2); }
 const ADMIN_PASS_KEY = 'samurai_admin_pass';
 const REMEMBER_KEY   = 'samurai_admin_remembered';
 const DATA_KEY = 'samurai_site_data';
+const SUPA_URL = 'https://wxszxacuuzmfsfsybrbf.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind4c3p4YWN1dXptZnNmc3licmJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjQxNTEsImV4cCI6MjA5MzkwMDE1MX0.kq8KOBwNoPTn5Z7RGhvFJOgdCtZfHeUN06o6CiDwe0k';
+
+// ── Supabase helpers ──
+async function supaLoad() {
+  try {
+    const r = await fetch(`${SUPA_URL}/rest/v1/site_data?id=eq.main&select=data`, {
+      headers: { 'apikey': SUPA_KEY, 'Authorization': `Bearer ${SUPA_KEY}` }
+    });
+    const rows = await r.json();
+    if (rows && rows[0] && rows[0].data && Object.keys(rows[0].data).length > 0) {
+      return rows[0].data;
+    }
+  } catch(e) { console.warn('Supabase load failed, using localStorage', e); }
+  return null;
+}
+
+async function supaSave(data) {
+  try {
+    await fetch(`${SUPA_URL}/rest/v1/site_data?id=eq.main`, {
+      method: 'PATCH',
+      headers: {
+        'apikey': SUPA_KEY,
+        'Authorization': `Bearer ${SUPA_KEY}`,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ data: data, updated_at: new Date().toISOString() })
+    });
+  } catch(e) { console.warn('Supabase save failed', e); }
+}
 const DEFAULT_PASS = '111111';
 
 const DEFAULT_DATA = {
@@ -1132,9 +1173,17 @@ let selectedFileType = null;
 // ════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════
-function init() {
-  const raw = localStorage.getItem(DATA_KEY);
-  siteData = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_DATA));
+async function init() {
+  // Try Supabase first, fallback to localStorage, then defaults
+  let supaData = await supaLoad();
+  if (supaData) {
+    siteData = supaData;
+    // Also cache locally for offline
+    localStorage.setItem(DATA_KEY, JSON.stringify(siteData));
+  } else {
+    const raw = localStorage.getItem(DATA_KEY);
+    siteData = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_DATA));
+  }
   renderReels();
   renderPlans();
   renderProcess();
@@ -1142,6 +1191,7 @@ function init() {
   renderWhyItems();
   loadFormValues();
   renderAnalytics();
+  document.getElementById('saveStatus').textContent = supaData ? '✅ מחובר לענן' : '⚠️ מצב לא מקוון';
 }
 
 function loadFormValues() {
@@ -1305,6 +1355,13 @@ function saveCurrentPanel() {
 // ════════════════════════════════════════════════
 function persist() {
   localStorage.setItem(DATA_KEY, JSON.stringify(siteData));
+  supaSave(siteData).then(() => {
+    const el = document.getElementById('saveStatus');
+    if (el) { el.textContent = '✅ נשמר בענן'; setTimeout(()=>{ el.textContent='✅ מחובר לענן'; },2000); }
+  }).catch(() => {
+    const el = document.getElementById('saveStatus');
+    if (el) el.textContent = '⚠️ שמור מקומית בלבד';
+  });
   unsavedChanges = false;
   document.getElementById('saveBar').classList.remove('visible');
   showToast('נשמר בהצלחה ✔');
@@ -1334,7 +1391,11 @@ function savePlans() {
 }
 
 function saveTexts() {
-  siteData.manifesto = {
+  // Save to the correct language slot
+  if (!siteData.translations) siteData.translations = {};
+  const target = adminLang === 'ro' ? siteData : (siteData.translations.en = siteData.translations.en || {});
+
+  target.manifesto = {
     line1: getVal('manifestoLine1'),
     line2: getVal('manifestoLine2'),
     p1: getVal('manifestoP1'),
@@ -1342,44 +1403,45 @@ function saveTexts() {
     p3: getVal('manifestoP3'),
     tags: Array.from(document.querySelectorAll('.manifesto-tag-input')).map(i=>i.value).filter(v=>v.trim())
   };
-  siteData.heroTexts = {
+  target.heroTexts = {
     line1: getVal('heroLine1'), line2: getVal('heroLine2'), line3: getVal('heroLine3'),
     label: getVal('heroLabel'), desc: getVal('heroDesc'),
     btnPrimary: getVal('heroBtnPrimary'), btnSecondary: getVal('heroBtnSecondary'),
     pills: Array.from(document.querySelectorAll('.hero-pill-input')).map(i=>i.value).filter(v=>v.trim())
   };
-  siteData.statsTexts = Array.from(document.querySelectorAll('.stat-row')).map(row=>({
+  target.statsTexts = Array.from(document.querySelectorAll('.stat-row')).map(row=>({
     num: row.querySelector('.stat-num-input')?.value||'',
     suffix: row.querySelector('.stat-suffix-input')?.value||'',
     label: row.querySelector('.stat-label-input')?.value||''
   }));
-  siteData.process = siteData.process.map((s,i)=>({
+  target.process = (siteData.process||[]).map((s,i)=>({
     title: getVal(`proc-title-${i}`), desc: getVal(`proc-desc-${i}`)
   }));
-  siteData.valuesTitle = {
+  target.valuesTitle = {
     line1: getVal('valuesTitle1'),
     line2: getVal('valuesTitle2')
   };
-  siteData.values = (siteData.values||[]).map((v,i)=>({
+  target.values = (siteData.values||[]).map((v,i)=>({
     num: getVal(`val-num-${i}`) || v.num,
     title: getVal(`val-title-${i}`),
     desc: getVal(`val-desc-${i}`)
   }));
-  siteData.whyTexts = {
+  target.whyTexts = {
     bigLine1: getVal('whyBigLine1'), bigLine2: getVal('whyBigLine2'), note: getVal('whyNote')
   };
-  siteData.why = siteData.why || {};
-  siteData.why.items = (siteData.why.items||[]).map((item,i)=>({
+  if (!target.why) target.why = {};
+  target.why.items = (siteData.why?.items||[]).map((item,i)=>({
     title: getVal(`why-title-${i}`), desc: getVal(`why-desc-${i}`)
   }));
-  // Clients — save name edits (logos already saved on upload)
+  // Clients — always on main siteData (shared across languages)
   document.querySelectorAll('.client-name-input').forEach(inp => {
     const idx = parseInt(inp.dataset.idx);
     if (siteData.clients[idx]) siteData.clients[idx].name = inp.value;
   });
-  siteData.fineItems = Array.from(document.querySelectorAll('.fine-input')).map(i=>i.value).filter(v=>v.trim());
-  siteData.tickerItems = Array.from(document.querySelectorAll('.ticker-input')).map(i=>i.value).filter(v=>v.trim());
+  target.fineItems = Array.from(document.querySelectorAll('.fine-input')).map(i=>i.value).filter(v=>v.trim());
+  target.tickerItems = Array.from(document.querySelectorAll('.ticker-input')).map(i=>i.value).filter(v=>v.trim());
   persist();
+  showToast(adminLang === 'ro' ? '✅ שמור — רומנית' : '✅ שמור — אנגלית');
 }
 
 function saveCta() {
@@ -1741,6 +1803,7 @@ function downloadHtml(html, filename) {
 function resetAll() {
   if (!confirm('למחוק את כל הנתונים ולחזור לברירת מחדל?')) return;
   localStorage.removeItem(DATA_KEY);
+  supaSave({});
   siteData = JSON.parse(JSON.stringify(DEFAULT_DATA));
   init();
   showToast('אופס הוחזר לברירת מחדל');
@@ -1890,6 +1953,47 @@ function addTickerItem() {
   d.style.cssText = 'display:flex;gap:8px;align-items:center;';
   d.innerHTML = `<input type="text" class="ticker-input" placeholder="פריט טיקר..." style="flex:1;" oninput="markUnsaved()"><button class="btn btn-danger btn-sm" onclick="this.closest('div').remove();markUnsaved()">×</button>`;
   document.getElementById('tickerEditor').appendChild(d);
+}
+
+// ── ADMIN LANGUAGE ──
+let adminLang = 'ro'; // default edit language
+
+function setAdminLang(lang) {
+  adminLang = lang;
+  document.getElementById('adminLangRO').className = 'btn btn-sm ' + (lang==='ro'?'btn-red':'btn-outline');
+  document.getElementById('adminLangEN').className = 'btn btn-sm ' + (lang==='en'?'btn-red':'btn-outline');
+  document.getElementById('adminLangBanner').style.display = 'block';
+  document.getElementById('adminLangName').textContent = lang==='ro' ? 'רומנית' : 'אנגלית';
+  // Reload form with the selected language data
+  loadFormValuesForLang(lang);
+}
+
+function loadFormValuesForLang(lang) {
+  const d = lang === 'ro' ? (siteData.translations?.ro || siteData) : (siteData.translations?.en || {});
+  
+  if (d.heroTexts || siteData.heroTexts) {
+    const ht = d.heroTexts || siteData.heroTexts || {};
+    setVal('heroLine1', ht.line1 || '');
+    setVal('heroLine2', ht.line2 || '');
+    setVal('heroLine3', ht.line3 || '');
+    setVal('heroLabel', ht.label || '');
+    setVal('heroDesc', ht.desc || '');
+    setVal('heroBtnPrimary', ht.btnPrimary || '');
+    setVal('heroBtnSecondary', ht.btnSecondary || '');
+  }
+  if (d.manifesto || siteData.manifesto) {
+    const m = d.manifesto || siteData.manifesto || {};
+    setVal('manifestoLine1', m.line1 || '');
+    setVal('manifestoLine2', m.line2 || '');
+    setVal('manifestoP1', m.p1 || '');
+    setVal('manifestoP2', m.p2 || '');
+    setVal('manifestoP3', m.p3 || '');
+  }
+  renderHeroPills();
+  renderManifestoTags();
+  renderStatsEditor();
+  renderFineEditor();
+  renderTickerEditor();
 }
 
 // ════════════════════════════════════════════════

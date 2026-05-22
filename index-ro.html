@@ -72,17 +72,6 @@ body[dir="ltr"] nav { direction: ltr; }
 .lang-nav a:hover { color:white; border-color:var(--red); }
 .lang-nav .lang-current { background:var(--red); border-color:var(--red); color:white; }
 
-
-/* ── LANG SWITCHER ── */
-.lang-btn {
-  background: transparent; border: 1px solid var(--border);
-  color: var(--mid); font-size: 11px; font-weight: 700;
-  padding: 5px 10px; cursor: pointer; letter-spacing: 1px;
-  transition: all 0.2s; font-family: inherit;
-}
-.lang-btn:hover { border-color: var(--red); color: var(--white); }
-.lang-btn.active { background: var(--red); border-color: var(--red); color: white; }
-
 /* ── TYPOGRAPHY ── */
 .serif { font-family: 'Noto Serif Hebrew', serif; }
 h1,h2,h3 { font-family: 'Noto Sans Hebrew', sans-serif; line-height: 1.15; }
@@ -955,10 +944,7 @@ select.form-input { cursor:pointer; }
       <li><a href="#plans" data-i18n="nav_plans">Pachete</a></li>
       <li><a href="#cta">Contact</a></li>
     </ul>
-    <div class="lang-switcher" style="display:flex;gap:4px;align-items:center;">
-    <button class="lang-btn active" data-lang="ro" onclick="setLang('ro')">RO</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-  </div>
+    <div class="lang-nav"><a href="index.html">עב</a><a href="index-en.html">EN</a><span class="lang-current">RO</span></div>
   <button class="nav-cta-btn" onclick="openModal()">Contactează-ne</button>
   </div>
 </nav>
@@ -1659,187 +1645,6 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 </script>
 </div><!-- /#site-wrapper -->
 
-
-<script>
-// ── BILINGUAL ENGINE (RO/EN) ──
-const SITE_TRANSLATIONS = {"ro": {"dir": "ltr", "lang": "ro", "page_title": "The Samurai | Agenție Video Scurt", "nav_logo": "The Samurai", "nav_works": "Lucrări", "nav_about": "Despre", "nav_plans": "Pachete", "nav_cta": "Contactează-ne", "lang_current": "RO", "lang_links": "<a href=\"index.html\">עב</a><a href=\"index-en.html\">EN</a>", "hero_label": "THESAMURAI.RO", "hero_title": "The Samurai<br><em style=\"font-style:italic;color:var(--red)\">câștigă</em><br>pentru tine.", "hero_sub": "Nu producem doar video — conducem un proces strategic complet care transformă modul în care brandul tău comunică cu publicul.", "hero_btn1": "Contactează-ne →", "hero_btn2": "Vezi pachetele", "hero_badge": "Short Video Agency", "hero_pill1": "Strategie", "hero_pill2": "Creativ", "hero_pill3": "Producție", "hero_pill4": "Distribuție", "stat1_num": "50", "stat1_suf": "+", "stat1_lbl": "Clienți activi", "stat2_num": "500", "stat2_suf": "+", "stat2_lbl": "Reels produse", "stat3_num": "8", "stat3_suf": "M+", "stat3_lbl": "Vizualizări totale", "stat4_num": "3", "stat4_suf": "", "stat4_lbl": "Instrumente: Adevăr · Perseverență · Valoare", "ticker": "Strategie · Marketing · Creativ · Producție · Short Format · Instagram Reels · TikTok · YouTube Shorts · Retenție lunară", "portfolio_eyebrow": "Lucrări selectate", "portfolio_title": "<em style=\"font-style:italic;color:var(--red)\">Exemple</em> din teren", "manifesto_eyebrow": "Despre noi", "manifesto_q": "Când rețelele sunt arena,<br><em>videoul este regele.</em>", "manifesto_p1": "The Samurai stă în fruntea bătăliei tale de marketing, protejând brandul tău, ascuțind mesajul și conducându-te înainte cu claritate și precizie.", "manifesto_p2": "Nu creăm doar conținut video – planificăm mișcările, formulăm strategia, îndreptăm sabia și ne asigurăm că fiecare clip lovește exact unde trebuie.", "manifesto_p3": "Nu ești singur – suntem Samurai-ul tău, luptând pentru tine, gândind pentru tine, câștigând pentru tine.", "manifesto_tags": ["Strateg", "Creativ", "Producător", "Regizor"], "process_eyebrow": "Cum lucrăm", "process_title": "Procesul nostru", "proc": [["Briefing strategic", "Înțelegem brandul, publicul și obiectivele de marketing."], ["Concept & scenariu", "Creăm conceptul creativ și scriptul fiecărui clip."], ["Filmare profesională", "Filmare cu echipament profesional, lumini și sunet."], ["Editare & branding", "Editare, subtitrări, grafică și identitate vizuală unitară."], ["Distribuție & analiză", "Publicare pe platforme și raport lunar de performanță."]], "plans_eyebrow": "Pachete", "plans_title": "Alege pachetul <em style=\"font-style:italic;color:var(--red)\">tău</em>", "plans_note": "Toate pachetele includ brief lunar, strategie, creație, producție și distribuție.", "plans_min": "Minim 3 luni · Fără TVA", "plan_names": ["De Bază", "Business", "Premium"], "plan_prices": ["5,999", "7,999", "9,999"], "plan_currency": "€", "plan_period": "/lună retainer", "price_hidden_label": "Prețul este ascuns", "reveal_btn": "Dezvăluie prețul", "plan_recommended": "Recomandat", "plan_features": [["4 reels/lună", "Material brut de la client", "Un rând de corecții", "Editare profesională + subtitrări", "Branding unitar"], ["8 reels/lună", "4h filmare profesională", "Un rând de corecții", "Distribuție pe social media", "Lumini, sunet și machiaj"], ["12 reels/lună", "8h filmare profesională", "2 rânduri de corecții", "Distribuție pe social media", "Management continuu + analiză lunară"]], "plan_cta": ["Începe →", "Începe →", "Începe →"], "values_eyebrow": "Filosofia noastră", "values_title": "3 instrumente <em style=\"font-style:italic;color:var(--red)\">pentru succes</em>", "values": [["01", "Adevăr", "Conținutul care vine dintr-un loc autentic conectează. Nu producem conținut – spunem o poveste reală care servește brandul tău."], ["02", "Perseverență", "Algoritmii iubesc consecvența. Retenție lunară = prezență constantă = creștere reală pe termen lung."], ["03", "Valoare", "Fiecare clip trebuie să creeze valoare reală pentru spectator. Asta transformă conținutul într-un instrument de marketing care produce rezultate."]], "why_eyebrow": "De ce noi", "why_big": "Nu concurăm la preț —<br><em>rezultate.</em>", "why_note": "Fiecare leu investit în Samurai este un leu care lucrează pentru tine 24/7 pe rețelele sociale.", "why_items": [["Strategie completă", "Nu doar producem — planificăm întregul traseu de marketing al conținutului tău."], ["Producție cinematografică", "Echipament profesional, lumini, sunet — fiecare clip arată ca un film."], ["Distribuție inteligentă", "Știm când, unde și cum să publicăm pentru maximum de impact."], ["Rezultate măsurabile", "Raport lunar cu cifre reale: vizualizări, reach, engagement și conversii."]], "clients_eyebrow": "Clienți", "fine_items": ["Filmare profesională cu lumini, sunet și machiaj inclusiv", "Publicare directă pe până la 4 platforme sociale", "Branding grafic unitar + playlist-uri + thumbnail-uri", "Strategie de conținut adaptată obiectivelor de marketing", "Management continuu — publicare, tag-uri, titluri și descrieri", "Raport statistic lunar prin email", "Cost de onboarding unic la începutul colaborării", "Prețul nu include actori, influenceri sau animații"], "cta_big": "<em>Hai!</em>", "cta_sub": "Ești gata să nu mai privești cum concurenții tăi au mai mult succes?", "cta_btn": "Contactează-ne acum →", "cta_note": "* Fără angajamente. Primul apel este gratuit.", "footer_tagline": "Agenție video scurt", "footer_email": "hi@thesamurai.ro", "footer_rights": "© 2025 The Samurai. Toate drepturile rezervate.", "modal_title": "Să vorbim", "modal_sub": "Spune-ne despre proiectul tău", "form_name": "Nume complet", "form_phone": "Telefon", "form_email": "Email", "form_plan": "Alege pachetul", "form_msg": "Spune-ne despre afacerea ta (opțional)", "form_submit": "Trimite →", "form_success": "Mesaj trimis! Te contactăm în curând."}, "en": {"dir": "ltr", "lang": "en", "page_title": "The Samurai | Short Video Agency", "nav_logo": "The Samurai", "nav_works": "Work", "nav_about": "About", "nav_plans": "Plans", "nav_cta": "Let's Talk", "lang_current": "EN", "lang_links": "<a href=\"index.html\">עב</a><a href=\"index-ro.html\">RO</a>", "hero_label": "THESAMURAI.RO", "hero_title": "The Samurai<br><em style=\"font-style:italic;color:var(--red)\">wins</em><br>for you.", "hero_sub": "We don't just produce video — we lead a full strategic process that transforms how your brand communicates with your audience.", "hero_btn1": "Let's Talk →", "hero_btn2": "See Plans", "hero_badge": "Short Video Agency", "hero_pill1": "Strategy", "hero_pill2": "Creative", "hero_pill3": "Production", "hero_pill4": "Distribution", "stat1_num": "50", "stat1_suf": "+", "stat1_lbl": "Active clients", "stat2_num": "500", "stat2_suf": "+", "stat2_lbl": "Reels produced", "stat3_num": "8", "stat3_suf": "M+", "stat3_lbl": "Total views", "stat4_num": "3", "stat4_suf": "", "stat4_lbl": "Tools for success: Truth · Persistence · Value", "ticker": "Strategy · Marketing · Creative · Production · Short Format · Instagram Reels · TikTok · YouTube Shorts · Monthly retainer", "portfolio_eyebrow": "Selected work", "portfolio_title": "<em style=\"font-style:italic;color:var(--red)\">Examples</em> from the field", "manifesto_eyebrow": "About us", "manifesto_q": "When the feed is the arena,<br><em>video is king.</em>", "manifesto_p1": "The Samurai stands at the front of your marketing battle — protecting your brand, sharpening your message, and leading you forward with clarity and precision.", "manifesto_p2": "We don't just create video content — we plan the moves, craft the strategy, aim the blade, and ensure every clip hits exactly where it should.", "manifesto_p3": "You're not alone — we're your Samurai, fighting for you, thinking for you, winning for you.", "manifesto_tags": ["Strategist", "Creative", "Producer", "Director"], "process_eyebrow": "How we work", "process_title": "Our Process", "proc": [["Strategic Brief", "We understand your brand, audience, and marketing goals."], ["Concept & Script", "We create the creative concept and script for each clip."], ["Professional Filming", "Filming with professional equipment, lighting, and sound."], ["Editing & Branding", "Editing, subtitles, graphics, and consistent visual identity."], ["Distribution & Analysis", "Publishing on platforms and monthly performance report."]], "plans_eyebrow": "Plans", "plans_title": "Choose your <em style=\"font-style:italic;color:var(--red)\">plan</em>", "plans_note": "All plans include monthly brief, strategy, creative, production and distribution.", "plans_min": "Minimum 3 months · Excl. VAT", "plan_names": ["Basic", "Business", "Premium"], "plan_prices": ["5,999", "7,999", "9,999"], "plan_currency": "€", "plan_period": "/mo retainer", "price_hidden_label": "Price is hidden", "reveal_btn": "Reveal Price", "plan_recommended": "Recommended", "plan_features": [["4 reels/month", "Raw footage from client", "One revision round", "Professional editing + subtitles", "Unified branding"], ["8 reels/month", "4h professional filming", "One revision round", "Social media distribution", "Lighting, sound & makeup"], ["12 reels/month", "8h professional filming", "2 revision rounds", "Social media distribution", "Ongoing management + monthly analysis"]], "plan_cta": ["Get Started →", "Get Started →", "Get Started →"], "values_eyebrow": "Our philosophy", "values_title": "3 tools for <em style=\"font-style:italic;color:var(--red)\">success</em>", "values": [["01", "Truth", "Content that comes from an authentic place connects. We don't produce content — we tell a real story that serves your brand."], ["02", "Persistence", "Algorithms love consistency. Monthly retainer = constant presence = real long-term growth."], ["03", "Value", "Every clip must create real value for the viewer. That's what turns content into a marketing tool that produces results."]], "why_eyebrow": "Why us", "why_big": "We don't compete on price —<br><em>results.</em>", "why_note": "Every dollar invested in Samurai is a dollar working for you 24/7 on social media.", "why_items": [["Full Strategy", "We don't just produce — we plan the entire marketing journey of your content."], ["Cinematic Production", "Professional equipment, lighting, sound — every clip looks like a film."], ["Smart Distribution", "We know when, where and how to publish for maximum impact."], ["Measurable Results", "Monthly report with real numbers: views, reach, engagement and conversions."]], "clients_eyebrow": "Clients", "fine_items": ["Professional filming with lighting, sound and makeup included", "Direct publishing to up to 4 social platforms", "Unified graphic branding + playlists + thumbnails", "Content strategy tailored to marketing goals", "Ongoing management — uploads, tags, titles and descriptions", "Monthly statistical report by email", "One-time onboarding fee at the start of collaboration", "Price does not include actors, influencers or animations"], "cta_big": "<em>Let's go!</em>", "cta_sub": "Ready to stop watching your competitors win?", "cta_btn": "Contact us now →", "cta_note": "* No commitments. First call is free.", "footer_tagline": "Short video agency", "footer_email": "hi@thesamurai.ro", "footer_rights": "© 2025 The Samurai. All rights reserved.", "modal_title": "Let's Talk", "modal_sub": "Tell us about your project", "form_name": "Full name", "form_phone": "Phone", "form_plan": "Choose a plan", "form_msg": "Tell us about your business (optional)", "form_submit": "Send →", "form_success": "Message sent! We'll be in touch soon.", "form_email": "Email"}};
-let CURRENT_LANG = localStorage.getItem('samurai_lang_ro') || 'ro';
-
-function setLang(lang) {
-  CURRENT_LANG = lang;
-  localStorage.setItem('samurai_lang_ro', lang);
-  // Merge static translations with admin-saved data
-  const baseT = SITE_TRANSLATIONS[lang] || {};
-  // Get admin data from localStorage
-  let adminData = {};
-  try { adminData = JSON.parse(localStorage.getItem('samurai_site_data') || '{}'); } catch(e) {}
-  // For RO: use adminData directly; for EN: use adminData.translations.en
-  const langData = lang === 'ro' ? adminData : (adminData.translations?.en || {});
-  // Build merged translation: admin data takes priority over static
-  const t = Object.assign({}, baseT);
-  // Override with admin saved texts
-  if (langData.heroTexts?.line1) { t.hero_line1 = langData.heroTexts.line1; t.hero_line2 = langData.heroTexts.line2; t.hero_line3 = langData.heroTexts.line3; t.hero_sub = langData.heroTexts.desc; t.hero_btn1 = langData.heroTexts.btnPrimary; t.hero_btn2 = langData.heroTexts.btnSecondary; }
-  if (langData.manifesto?.p1) { t.manifesto_p1 = langData.manifesto.p1; t.manifesto_p2 = langData.manifesto.p2; t.manifesto_p3 = langData.manifesto.p3; t.manifesto_q1 = langData.manifesto.line1; t.manifesto_q2 = langData.manifesto.line2; }
-  if (langData.statsTexts?.length) { langData.statsTexts.forEach((s,i)=>{ t['stat'+(i+1)+'_num']=s.num; t['stat'+(i+1)+'_suf']=s.suffix||''; t['stat'+(i+1)+'_lbl']=s.label; }); }
-  if (langData.process?.length) { t.proc = langData.process.map(p => [p.title, p.desc]); }
-  if (langData.values?.length) { t.values = langData.values.map(v => [v.num, v.title, v.desc]); }
-  if (langData.why?.items?.length) { t.why_items = langData.why.items.map(w => [w.title, w.desc]); }
-  if (langData.whyTexts?.bigLine1) { t.why_big = langData.whyTexts.bigLine1 + '<br><em>' + langData.whyTexts.bigLine2 + '</em>'; t.why_note = langData.whyTexts.note; }
-  if (langData.fineItems?.length) { t.fine_items = langData.fineItems; }
-  if (langData.tickerItems?.length) { t.ticker = langData.tickerItems.join(' · '); }
-  if (langData.cta?.big) { t.cta_big = '<em>' + langData.cta.big + '</em>'; t.cta_sub = langData.cta.sub; t.cta_btn = langData.cta.btnText; }
-  if (!t) return;
-
-  // Direction
-  document.documentElement.lang = t.lang;
-  document.documentElement.dir = t.dir;
-  document.body.dir = t.dir;
-
-  // Active button
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-
-  // Nav
-  const logo = document.querySelector('.nav-logo'); if (logo) logo.textContent = t.nav_logo;
-  const works = document.querySelector('a[href="#portfolio"].nav-link'); if (works) works.textContent = t.nav_works;
-  const about = document.querySelector('a[href="#manifesto"].nav-link'); if (about) about.textContent = t.nav_about;
-  const plans = document.querySelector('a[href="#plans"].nav-link'); if (plans) plans.textContent = t.nav_plans;
-  const cta = document.querySelector('.nav-cta-btn'); if (cta) cta.textContent = t.nav_cta;
-
-  // Hero
-  const label = document.querySelector('.hero-label'); if (label) label.textContent = t.hero_label;
-  const ht = document.querySelector('.hero-title'); if (ht) ht.innerHTML = t.hero_line1 + '<br><em style="font-style:italic;color:var(--red)">' + t.hero_line2 + '</em><br>' + t.hero_line3;
-  const sub = document.querySelector('.hero-sub'); if (sub) sub.textContent = t.hero_sub;
-  const btn1 = document.querySelector('.hero-actions .btn-primary'); if (btn1) btn1.textContent = t.hero_btn1;
-  const btn2 = document.querySelector('.hero-actions .btn-ghost'); if (btn2) btn2.textContent = t.hero_btn2;
-  const badge = document.querySelector('.hero-badge'); if (badge) badge.textContent = t.hero_badge;
-  const pills = document.querySelector('.hero-pills');
-  if (pills) pills.innerHTML = [t.hero_pill1, t.hero_pill2, t.hero_pill3, t.hero_pill4].map(p => '<span class="hero-pill">' + p + '</span>').join('');
-
-  // Stats
-  const statItems = document.querySelectorAll('.hero-stat');
-  [{}: 'stat1', 1: 'stat2', 2: 'stat3', 3: 'stat4'].forEach((_, i) => {
-    const el = statItems[i]; if (!el) return;
-    const num = el.querySelector('.hero-stat-num');
-    if (num) num.innerHTML = t['stat'+(i+1)+'_num'] + '<span>' + t['stat'+(i+1)+'_suf'] + '</span>';
-    const lbl = el.querySelector('.hero-stat-label');
-    if (lbl) lbl.textContent = t['stat'+(i+1)+'_lbl'];
-  });
-
-  // Ticker
-  const ticker = document.getElementById('tickerTrack');
-  if (ticker) {
-    const items = t.ticker.split(' · ');
-    ticker.innerHTML = [...items, ...items].map(x => '<span class="ticker-item">' + x + '</span>').join('');
-  }
-
-  // Section eyebrows
-  const setEyebrow = (id, val) => { const el = document.querySelector('#' + id + ' .eyebrow-label'); if (el) el.textContent = val; };
-  setEyebrow('portfolio', t.portfolio_eyebrow);
-  setEyebrow('manifesto', t.manifesto_eyebrow);
-  setEyebrow('process', t.process_eyebrow);
-  setEyebrow('plans', t.plans_eyebrow);
-  setEyebrow('values', t.values_eyebrow);
-  setEyebrow('why', t.why_eyebrow);
-  setEyebrow('clients', t.clients_eyebrow);
-
-  // Portfolio title
-  const portTitle = document.querySelector('#portfolio .section-title');
-  if (portTitle) portTitle.innerHTML = '<em style="font-style:italic;color:var(--red)">' + t.portfolio_title1 + '</em> ' + t.portfolio_title2;
-
-  // Process title
-  const procTitle = document.querySelector('#process .section-title');
-  if (procTitle) procTitle.textContent = t.process_title;
-
-  // Plans title
-  const plansTitle = document.querySelector('#plans .section-title');
-  if (plansTitle) plansTitle.innerHTML = t.plans_title1 + ' <em style="font-style:italic;color:var(--red)">' + t.plans_title2 + '</em>';
-
-  // Manifesto
-  const manQ = document.querySelector('.manifesto-quote');
-  if (manQ) manQ.innerHTML = t.manifesto_q1 + '<br><em>' + t.manifesto_q2 + '</em>';
-  const manPs = document.querySelectorAll('.manifesto-text p');
-  if (manPs[0]) manPs[0].textContent = t.manifesto_p1;
-  if (manPs[1]) manPs[1].textContent = t.manifesto_p2;
-  if (manPs[2]) manPs[2].textContent = t.manifesto_p3;
-  const manTags = document.querySelector('.manifesto-tag-row');
-  if (manTags) manTags.innerHTML = t.manifesto_tags.map(tag => '<span class="manifesto-tag">' + tag + '</span>').join('');
-
-  // Process steps
-  const procSteps = document.querySelectorAll('.process-step');
-  t.proc.forEach(([title, desc], i) => {
-    const el = procSteps[i]; if (!el) return;
-    const tt = el.querySelector('.process-step-title'); if (tt) tt.textContent = title;
-    const dd = el.querySelector('.process-step-desc'); if (dd) dd.textContent = desc;
-  });
-
-  // Plans
-  const planCols = document.querySelectorAll('.plan-col');
-  t.plan_names.forEach((name, i) => {
-    const el = planCols[i]; if (!el) return;
-    const nm = el.querySelector('.plan-name'); if (nm) nm.textContent = name;
-    const wrap = el.querySelector('.price-reveal-wrap');
-    if (wrap) {
-      wrap.dataset.plan = name;
-      const price = t.plan_prices[i];
-      wrap.dataset.price = price;
-      const shown = wrap.querySelector('.plan-price-num'); if (shown) shown.textContent = price;
-      const unit = wrap.querySelector('.plan-price-unit'); if (unit) unit.textContent = t.plan_period;
-      const hidLabel = wrap.querySelector('.price-hidden-label'); if (hidLabel) hidLabel.textContent = t.price_hidden_label;
-      const revBtn = wrap.querySelector('.reveal-btn'); if (revBtn) revBtn.textContent = t.reveal_btn;
-    }
-    const feats = el.querySelector('.plan-features');
-    if (feats && t.plan_features[i]) feats.innerHTML = t.plan_features[i].map(f => '<li>✓ ' + f + '</li>').join('');
-    const planCta = el.querySelector('.plan-cta'); if (planCta) planCta.textContent = t.plan_cta[i];
-    const rec = el.querySelector('.plan-recommended, .plan-featured-tag'); if (rec) rec.textContent = t.plan_recommended;
-  });
-
-  // Values
-  const valTitle = document.querySelector('#values .section-title');
-  if (valTitle) valTitle.innerHTML = t.values_title;
-  const valItems = document.querySelectorAll('.value-item');
-  t.values.forEach(([num, title, desc], i) => {
-    const el = valItems[i]; if (!el) return;
-    const vt = el.querySelector('.value-title'); if (vt) vt.textContent = title;
-    const vd = el.querySelector('.value-desc'); if (vd) vd.textContent = desc;
-  });
-
-  // Why
-  const whyBig = document.querySelector('.why-big-text');
-  if (whyBig) whyBig.innerHTML = t.why_big;
-  const whyNote = document.querySelector('.why-note'); if (whyNote) whyNote.textContent = t.why_note;
-  const whyItems = document.querySelectorAll('.why-item');
-  t.why_items.forEach(([wt, wd], i) => {
-    const el = whyItems[i]; if (!el) return;
-    const tt = el.querySelector('.why-item-title'); if (tt) tt.textContent = wt;
-    const dd = el.querySelector('.why-item-desc'); if (dd) dd.textContent = wd;
-  });
-
-  // Fine print
-  const fineGrid = document.querySelector('.fine-grid');
-  if (fineGrid) fineGrid.innerHTML = t.fine_items.map(item => '<div class="fine-item"><span class="fine-check">✓</span>' + item + '</div>').join('');
-
-  // CTA
-  const ctaTitle = document.querySelector('.cta-title'); if (ctaTitle) ctaTitle.innerHTML = t.cta_big;
-  const ctaSub = document.querySelector('.cta-sub'); if (ctaSub) ctaSub.textContent = t.cta_sub;
-  const ctaBtn = document.querySelector('.cta-actions .btn-primary'); if (ctaBtn) ctaBtn.textContent = t.cta_btn;
-
-  // Footer
-  const footerTagline = document.querySelector('.footer-tagline'); if (footerTagline) footerTagline.textContent = t.footer_tagline;
-
-  // Modal
-  const modTitle = document.querySelector('.modal-title'); if (modTitle) modTitle.textContent = t.modal_title;
-  const modSub = document.querySelector('.modal-sub'); if (modSub) modSub.textContent = t.modal_sub;
-  // Form labels
-  const formLabels = document.querySelectorAll('.form-label');
-  const labelKeys = ['form_name', 'form_phone', 'form_email', 'form_plan', 'form_msg'];
-  // Submit btn
-  const submitBtn = document.getElementById('submitBtn'); if (submitBtn) submitBtn.textContent = t.form_submit;
-  // Floating CTA
-  const floatBtn = document.getElementById('floatingCta'); if (floatBtn) floatBtn.textContent = t.nav_cta;
-}
-
-document.addEventListener('DOMContentLoaded', () => setLang(CURRENT_LANG));
-</script>
 </body>
 </html><div class="hero-badge">Short Video Agency</div>
   </div>

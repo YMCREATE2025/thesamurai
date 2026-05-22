@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ro" dir="ltr">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Samurai | Agenție Video Scurt</title>
+<title>The Samurai | Short Video Agency</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700;900&family=Noto+Serif+Hebrew:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
 <style>
@@ -71,17 +71,6 @@ body[dir="ltr"] nav { direction: ltr; }
 }
 .lang-nav a:hover { color:white; border-color:var(--red); }
 .lang-nav .lang-current { background:var(--red); border-color:var(--red); color:white; }
-
-
-/* ── LANG SWITCHER ── */
-.lang-btn {
-  background: transparent; border: 1px solid var(--border);
-  color: var(--mid); font-size: 11px; font-weight: 700;
-  padding: 5px 10px; cursor: pointer; letter-spacing: 1px;
-  transition: all 0.2s; font-family: inherit;
-}
-.lang-btn:hover { border-color: var(--red); color: var(--white); }
-.lang-btn.active { background: var(--red); border-color: var(--red); color: white; }
 
 /* ── TYPOGRAPHY ── */
 .serif { font-family: 'Noto Serif Hebrew', serif; }
@@ -891,23 +880,23 @@ select.form-input { cursor:pointer; }
 <body dir="ltr">
 
 <!-- ══ FLOATING CTA ══ -->
-<button class="floating-cta" id="floatingCta" onclick="openModal()">Contactează-ne</button>
+<button class="floating-cta" id="floatingCta" onclick="openModal()">Let's Talk</button>
 
 <!-- ══ MODAL ══ -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <div class="modal-header">
-      <div class="modal-title">Să vorbim</div>
-      <div class="modal-sub">Spune-ne despre proiectul tău</div>
+      <div class="modal-title">Let's Talk</div>
+      <div class="modal-sub">Tell us about your project</div>
     </div>
     <div class="modal-body" id="modalForm">
       <div class="form-group">
-        <label class="form-label">Nume complet *</label>
-        <input class="form-input" type="text" id="formName" placeholder="Ion Popescu">
+        <label class="form-label">Full name *</label>
+        <input class="form-input" type="text" id="formName" placeholder="Jane Smith">
       </div>
       <div class="form-group">
-        <label class="form-label">Telefon *</label>
+        <label class="form-label">Phone *</label>
         <input class="form-input" type="tel" id="formPhone" placeholder="050-0000000">
       </div>
       <div class="form-group">
@@ -915,27 +904,27 @@ select.form-input { cursor:pointer; }
         <input class="form-input" type="email" id="formEmail" placeholder="you@company.com">
       </div>
       <div class="form-group">
-        <label class="form-label">Alege pachetul</label>
+        <label class="form-label">Choose a plan</label>
         <select class="form-input" id="formPlan">
-          <option value="">— Alege pachetul —</option>
-          <option>De Bază — 5,999 €</option>
+          <option value="">— Choose a plan —</option>
+          <option>Basic — 5,999 €</option>
           <option>Business — 7,999 €</option>
           <option>Premium — 9,999 €</option>
-          <option>Nu știu încă</option>
+          <option>Not sure yet</option>
         </select>
       </div>
       <div class="form-group">
-        <label class="form-label">Spune-ne despre afacerea ta (opțional)</label>
-        <textarea class="form-input" id="formMsg" rows="3" style="resize:vertical" placeholder="Spune-ne despre afacerea ta (opțional)..."></textarea>
+        <label class="form-label">Tell us about your business (optional)</label>
+        <textarea class="form-input" id="formMsg" rows="3" style="resize:vertical" placeholder="Tell us about your business (optional)..."></textarea>
       </div>
       <button class="btn-primary" style="width:100%;text-align:center;justify-content:center;" onclick="submitForm()">
-        Trimite →
+        Send →
       </button>
     </div>
     <div class="modal-success" id="modalSuccess">
       <div class="success-icon">✅</div>
-      <div class="success-title">Mulțumim!</div>
-      <div class="success-sub">Mesaj trimis! Te contactăm în curând.</div>
+      <div class="success-title">Thank you!</div>
+      <div class="success-sub">Message sent! We'll be in touch soon.</div>
     </div>
   </div>
 </div>
@@ -949,17 +938,14 @@ select.form-input { cursor:pointer; }
       The Samurai
     </a>
     <ul class="nav-links">
-      <li><a href="#portfolio" data-i18n="nav_works">Lucrări</a></li>
-      <li><a href="#manifesto" data-i18n="nav_about">Despre</a></li>
-      <li><a href="#process">Cum lucrăm</a></li>
-      <li><a href="#plans" data-i18n="nav_plans">Pachete</a></li>
+      <li><a href="#portfolio" data-i18n="nav_works">Work</a></li>
+      <li><a href="#manifesto" data-i18n="nav_about">About</a></li>
+      <li><a href="#process">How we work</a></li>
+      <li><a href="#plans" data-i18n="nav_plans">Plans</a></li>
       <li><a href="#cta">Contact</a></li>
     </ul>
-    <div class="lang-switcher" style="display:flex;gap:4px;align-items:center;">
-    <button class="lang-btn active" data-lang="ro" onclick="setLang('ro')">RO</button>
-    <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-  </div>
-  <button class="nav-cta-btn" onclick="openModal()">Contactează-ne</button>
+    <div class="lang-nav"><a href="index.html">עב</a><a href="index-ro.html">RO</a><span class="lang-current">EN</span></div>
+  <button class="nav-cta-btn" onclick="openModal()">Let's Talk</button>
   </div>
 </nav>
 
@@ -969,25 +955,25 @@ select.form-input { cursor:pointer; }
   <div class="hero-bg-pattern"></div>
   <div class="hero-left">
     <div class="hero-label" data-i18n="hero_label">THESAMURAI.RO</div>
-    <h1 class="hero-title">The Samurai<br><em style="font-style:italic;color:var(--red)">câștigă</em><br>pentru tine.</h1>
-    <p class="hero-sub" data-i18n="hero_sub">Nu producem doar video — conducem un proces strategic complet care transformă modul în care brandul tău comunică cu publicul.</p>
-    <div class="hero-pills"><span class="hero-pill">Strategie</span><span class="hero-pill">Creativ</span><span class="hero-pill">Producție</span><span class="hero-pill">Distribuție</span></div>
+    <h1 class="hero-title">The Samurai<br><em style="font-style:italic;color:var(--red)">wins</em><br>for you.</h1>
+    <p class="hero-sub" data-i18n="hero_sub">We don't just produce video — we lead a full strategic process that transforms how your brand communicates with your audience.</p>
+    <div class="hero-pills"><span class="hero-pill">Strategy</span><span class="hero-pill">Creative</span><span class="hero-pill">Production</span><span class="hero-pill">Distribution</span></div>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="openModal()" data-i18n="hero_btn1">Contactează-ne →</button>
-      <a href="#plans" class="btn-ghost" data-i18n="hero_btn2">Vezi pachetele</a>
+      <button class="btn-primary" onclick="openModal()" data-i18n="hero_btn1">Let's Talk →</button>
+      <a href="#plans" class="btn-ghost" data-i18n="hero_btn2">See Plans</a>
     </div>
   </div>
   <div class="hero-badge">Short Video Agency</div>
   <div class="hero-floating-bar">
-  <div class="hero-stat"><div class="hero-stat-num">50<span>+</span></div><div class="hero-stat-label">Clienți activi</div></div>
-  <div class="hero-stat"><div class="hero-stat-num">500<span>+</span></div><div class="hero-stat-label">Reels produse</div></div>
-  <div class="hero-stat"><div class="hero-stat-num">8<span>M+</span></div><div class="hero-stat-label">Vizualizări totale</div></div>
-  <div class="hero-stat"><div class="hero-stat-num">3<span></span></div><div class="hero-stat-label">Instrumente: Adevăr · Perseverență · Valoare</div></div>
+  <div class="hero-stat"><div class="hero-stat-num">50<span>+</span></div><div class="hero-stat-label">Active clients</div></div>
+  <div class="hero-stat"><div class="hero-stat-num">500<span>+</span></div><div class="hero-stat-label">Reels produced</div></div>
+  <div class="hero-stat"><div class="hero-stat-num">8<span>M+</span></div><div class="hero-stat-label">Total views</div></div>
+  <div class="hero-stat"><div class="hero-stat-num">3<span></span></div><div class="hero-stat-label">Tools for success: Truth · Persistence · Value</div></div>
 </section>
 
 <!-- ══ TICKER ══ -->
 <div class="ticker">
-  <div class="ticker-track" id="tickerTrack"><span class="ticker-item">Strategie</span><span class="ticker-item">Marketing</span><span class="ticker-item">Creativ</span><span class="ticker-item">Producție</span><span class="ticker-item">Short Format</span><span class="ticker-item">Instagram Reels</span><span class="ticker-item">TikTok</span><span class="ticker-item">YouTube Shorts</span><span class="ticker-item">Retenție lunară</span><span class="ticker-item">Strategie</span><span class="ticker-item">Marketing</span><span class="ticker-item">Creativ</span><span class="ticker-item">Producție</span><span class="ticker-item">Short Format</span><span class="ticker-item">Instagram Reels</span><span class="ticker-item">TikTok</span><span class="ticker-item">YouTube Shorts</span><span class="ticker-item">Retenție lunară</span></div>
+  <div class="ticker-track" id="tickerTrack"><span class="ticker-item">Strategy</span><span class="ticker-item">Marketing</span><span class="ticker-item">Creative</span><span class="ticker-item">Production</span><span class="ticker-item">Short Format</span><span class="ticker-item">Instagram Reels</span><span class="ticker-item">TikTok</span><span class="ticker-item">YouTube Shorts</span><span class="ticker-item">Monthly retainer</span><span class="ticker-item">Strategy</span><span class="ticker-item">Marketing</span><span class="ticker-item">Creative</span><span class="ticker-item">Production</span><span class="ticker-item">Short Format</span><span class="ticker-item">Instagram Reels</span><span class="ticker-item">TikTok</span><span class="ticker-item">YouTube Shorts</span><span class="ticker-item">Monthly retainer</span></div>
 </div>
 
 <!-- ══ PORTFOLIO ══ -->
@@ -996,32 +982,32 @@ select.form-input { cursor:pointer; }
     <div class="section-eyebrow fade-up">
       <span class="eyebrow-num">01</span>
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-label">Lucrări selectate</span>
+      <span class="eyebrow-label">Selected work</span>
     </div>
-    <h2 class="section-title fade-up"><em style="font-style:italic;color:var(--red)">Exemple</em> din teren</h2>
+    <h2 class="section-title fade-up"><em style="font-style:italic;color:var(--red)">Examples</em> from the field</h2>
   </div>
   <div class="carousel-wrapper">
     <div style="overflow:hidden;">
       <div class="carousel-track" id="carouselTrack">
         <div class="reel-card" onclick="trackEvent('reel_click','ארומה')">
-          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#1a0a00,#3d1200,#000)"><div class="reel-overlay-text"><div class="reel-client">Aroma</div><div class="reel-desc">Campanie lansare produs</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
-          <div class="reel-meta"><div class="reel-tag">Alimente & Băuturi</div><div class="reel-stats"><span>2.4M</span> vizualizări</div></div>
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#1a0a00,#3d1200,#000)"><div class="reel-overlay-text"><div class="reel-client">Aroma</div><div class="reel-desc">Product launch campaign</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">Food & Beverages</div><div class="reel-stats"><span>2.4M</span> views</div></div>
         </div>
         <div class="reel-card" onclick="trackEvent('reel_click','ENOVA')">
-          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#000a1a,#002244,#000)"><div class="reel-overlay-text"><div class="reel-client">ENOVA</div><div class="reel-desc">Serie de conținut expert</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
-          <div class="reel-meta"><div class="reel-tag">Consultanță business</div><div class="reel-stats"><span>870K</span> vizualizări</div></div>
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#000a1a,#002244,#000)"><div class="reel-overlay-text"><div class="reel-client">ENOVA</div><div class="reel-desc">Expert content series</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">Business coaching</div><div class="reel-stats"><span>870K</span> views</div></div>
         </div>
         <div class="reel-card" onclick="trackEvent('reel_click','שבירו')">
-          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0a00,#2a2200,#000)"><div class="reel-overlay-text"><div class="reel-client">Shaviro</div><div class="reel-desc">Video imobiliar proiect nou</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
-          <div class="reel-meta"><div class="reel-tag">Imobiliare</div><div class="reel-stats"><span>1.1M</span> vizualizări</div></div>
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0a00,#2a2200,#000)"><div class="reel-overlay-text"><div class="reel-client">Shaviro</div><div class="reel-desc">Real estate project video</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">Real estate</div><div class="reel-stats"><span>1.1M</span> views</div></div>
         </div>
         <div class="reel-card" onclick="trackEvent('reel_click','Ram-Mograbi')">
           <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0010,#1a0035,#000)"><div class="reel-overlay-text"><div class="reel-client">Ram-Mograbi</div><div class="reel-desc">Brand storytelling</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
-          <div class="reel-meta"><div class="reel-tag">Boutique</div><div class="reel-stats"><span>650K</span> vizualizări</div></div>
+          <div class="reel-meta"><div class="reel-tag">Boutique</div><div class="reel-stats"><span>650K</span> views</div></div>
         </div>
         <div class="reel-card" onclick="trackEvent('reel_click','The Samurai')">
-          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0000,#2d0000,#000)"><div class="reel-overlay-text"><div class="reel-client">The Samurai</div><div class="reel-desc">Campanie de branding personal</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
-          <div class="reel-meta"><div class="reel-tag">Branding</div><div class="reel-stats"><span>3.2M</span> vizualizări</div></div>
+          <div class="reel-phone"><div class="reel-screen" style="background:linear-gradient(160deg,#0a0000,#2d0000,#000)"><div class="reel-overlay-text"><div class="reel-client">The Samurai</div><div class="reel-desc">Personal branding campaign</div></div><div class="reel-play-btn">▶</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div>
+          <div class="reel-meta"><div class="reel-tag">Branding</div><div class="reel-stats"><span>3.2M</span> views</div></div>
         </div>
       </div>
     </div>
@@ -1040,18 +1026,18 @@ select.form-input { cursor:pointer; }
     <div class="section-eyebrow fade-up">
       <span class="eyebrow-num">02</span>
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-label">Despre noi</span>
+      <span class="eyebrow-label">About us</span>
     </div>
     <div class="manifesto-grid">
       <div class="fade-up">
-        <div class="manifesto-quote">Când rețelele sunt arena,<br><em>videoul este regele.</em></div>
-        <div class="manifesto-tag-row" style="margin-top:32px;"><span class="manifesto-tag">Strateg</span><span class="manifesto-tag">Creativ</span><span class="manifesto-tag">Producător</span><span class="manifesto-tag">Regizor</span></div>
+        <div class="manifesto-quote">When the feed is the arena,<br><em>video is king.</em></div>
+        <div class="manifesto-tag-row" style="margin-top:32px;"><span class="manifesto-tag">Strategist</span><span class="manifesto-tag">Creative</span><span class="manifesto-tag">Producer</span><span class="manifesto-tag">Director</span></div>
       </div>
-      <div class="manifesto-text fade-up"><p>The Samurai stă în fruntea bătăliei tale de marketing, protejând brandul tău, ascuțind mesajul și conducându-te înainte cu claritate și precizie.</p>
-        <p>Nu creăm doar conținut video – planificăm mișcările, formulăm strategia, îndreptăm sabia și ne asigurăm că fiecare clip lovește exact unde trebuie.</p>
-        <p>Nu ești singur – suntem Samurai-ul tău, luptând pentru tine, gândind pentru tine, câștigând pentru tine.</p>
+      <div class="manifesto-text fade-up"><p>The Samurai stands at the front of your marketing battle — protecting your brand, sharpening your message, and leading you forward with clarity and precision.</p>
+        <p>We don't just create video content — we plan the moves, craft the strategy, aim the blade, and ensure every clip hits exactly where it should.</p>
+        <p>You're not alone — we're your Samurai, fighting for you, thinking for you, winning for you.</p>
         <div style="margin-top:8px;">
-          <button class="btn-primary" onclick="openModal()" data-i18n="hero_btn1">Contactează-ne →</button>
+          <button class="btn-primary" onclick="openModal()" data-i18n="hero_btn1">Let's Talk →</button>
         </div>
       </div>
     </div>
@@ -1062,19 +1048,19 @@ select.form-input { cursor:pointer; }
 <div class="stats-band fade-up">
   <div class="stat-item">
     <div class="stat-num">50<em>+</em></div>
-    <div class="stat-label">Clienți activi</div>
+    <div class="stat-label">Active clients</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">500<em>+</em></div>
-    <div class="stat-label">Reels produse</div>
+    <div class="stat-label">Reels produced</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">8<em>M</em></div>
-    <div class="stat-label">vizualizări totale</div>
+    <div class="stat-label">views total</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">3</div>
-    <div class="stat-label">Instrumente: Adevăr · Perseverență · Valoare</div>
+    <div class="stat-label">Tools for success: Truth · Persistence · Value</div>
   </div>
 </div>
 
@@ -1086,38 +1072,38 @@ select.form-input { cursor:pointer; }
     <div class="section-eyebrow fade-up">
       <span class="eyebrow-num">03</span>
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-label">Cum lucrăm</span>
+      <span class="eyebrow-label">How we work</span>
     </div>
-    <h2 class="section-title fade-up">Procesul nostru</h2>
+    <h2 class="section-title fade-up">Our Process</h2>
     <div class="process-steps fade-up">
       <div class="process-step">
         <div class="process-step-num">1</div>
-        <div class="process-step-title">Briefing strategic</div>
-        <div class="process-step-desc">Înțelegem brandul, publicul și obiectivele de marketing.</div>
+        <div class="process-step-title">Strategic Brief</div>
+        <div class="process-step-desc">We understand your brand, audience, and marketing goals.</div>
         <div class="process-step-line"></div>
       </div>
       <div class="process-step">
         <div class="process-step-num">2</div>
-        <div class="process-step-title">Concept & scenariu</div>
-        <div class="process-step-desc">Creăm conceptul creativ și scriptul fiecărui clip.</div>
+        <div class="process-step-title">Concept & Script</div>
+        <div class="process-step-desc">We create the creative concept and script for each clip.</div>
         <div class="process-step-line"></div>
       </div>
       <div class="process-step">
         <div class="process-step-num">3</div>
-        <div class="process-step-title">Filmare profesională</div>
-        <div class="process-step-desc">Filmare cu echipament profesional, lumini și sunet.</div>
+        <div class="process-step-title">Professional Filming</div>
+        <div class="process-step-desc">Filming with professional equipment, lighting, and sound.</div>
         <div class="process-step-line"></div>
       </div>
       <div class="process-step">
         <div class="process-step-num">4</div>
-        <div class="process-step-title">Editare & branding</div>
-        <div class="process-step-desc">Editare, subtitrări, grafică și identitate vizuală unitară.</div>
+        <div class="process-step-title">Editing & Branding</div>
+        <div class="process-step-desc">Editing, subtitles, graphics, and consistent visual identity.</div>
         <div class="process-step-line"></div>
       </div>
       <div class="process-step">
         <div class="process-step-num">5</div>
-        <div class="process-step-title">Distribuție & analiză</div>
-        <div class="process-step-desc">Publicare pe platforme și raport lunar de performanță.</div>
+        <div class="process-step-title">Distribution & Analysis</div>
+        <div class="process-step-desc">Publishing on platforms and monthly performance report.</div>
         <div class="process-step-line"></div>
       </div>
     </div>
@@ -1134,69 +1120,69 @@ select.form-input { cursor:pointer; }
         <div class="section-eyebrow fade-up">
           <span class="eyebrow-num">04</span>
           <span class="eyebrow-line"></span>
-          <span class="eyebrow-label">Pachete</span>
+          <span class="eyebrow-label">Plans</span>
         </div>
-        <h2 class="section-title fade-up">Alege pachetul <em style="font-style:italic;color:var(--red)">tău</em></h2>
+        <h2 class="section-title fade-up">Choose your <em style="font-style:italic;color:var(--red)">plan</em></h2>
       </div>
       <div class="plans-note fade-up">
-        Toate pachetele includ brief lunar, strategie, creație, producție și distribuție.<br>
-        Minim 3 luni · Fără TVA</div>
+        All plans include monthly brief, strategy, creative, production and distribution.<br>
+        Minimum 3 months · Excl. VAT</div>
     </div>
 
     <div class="plans-grid fade-up">
 
       <!-- BASIC -->
       <div class="plan-col">
-        <div class="plan-name">De Bază</div>
-        <div class="price-reveal-wrap" data-plan="De Bază" data-price="5,999">
+        <div class="plan-name">Basic</div>
+        <div class="price-reveal-wrap" data-plan="Basic" data-price="5,999">
           <div class="price-hidden-box">
             <div class="price-lock-icon">🔒</div>
-            <div class="price-hidden-label">Prețul este ascuns</div>
-            <button class="price-reveal-btn" onclick="revealPrice(this)">Dezvăluie prețul</button>
+            <div class="price-hidden-label">Price is hidden</div>
+            <button class="price-reveal-btn" onclick="revealPrice(this)">Reveal Price</button>
           </div>
           <div class="price-shown-box" style="display:none">
             <div class="plan-price-num">5,999</div>
-            <div class="plan-price-unit">€ /lună retainer</div>
+            <div class="plan-price-unit">€ /mo retainer</div>
           </div>
         </div>
         <hr class="plan-divider">
         <ul class="plan-features">
-          <li>8 reels/lună</li>
-          <li>Material brut de la client</li>
-          <li>Un rând de corecții</li>
-          <li>Editare profesională + subtitrări</li>
-          <li>Branding unitar</li>
+          <li>8 reels/month</li>
+          <li>Raw footage from client</li>
+          <li>One revision round</li>
+          <li>Professional editing + subtitles</li>
+          <li>Unified branding</li>
         </ul>
-        <button class="plan-cta" onclick="openModal();trackEvent('cta_click','מתחילים-De Bază')">
-          Începe →
+        <button class="plan-cta" onclick="openModal();trackEvent('cta_click','מתחילים-Basic')">
+          Get Started →
         </button>
       </div>
 
       <!-- BUSINESS -->
       <div class="plan-col featured">
-        <div class="plan-featured-tag">Recomandat</div>
+        <div class="plan-featured-tag">Recommended</div>
         <div class="plan-name">Business</div>
         <div class="price-reveal-wrap" data-plan="Business" data-price="7,999">
           <div class="price-hidden-box">
             <div class="price-lock-icon">🔒</div>
-            <div class="price-hidden-label">Prețul este ascuns</div>
-            <button class="price-reveal-btn" onclick="revealPrice(this)">Dezvăluie prețul</button>
+            <div class="price-hidden-label">Price is hidden</div>
+            <button class="price-reveal-btn" onclick="revealPrice(this)">Reveal Price</button>
           </div>
           <div class="price-shown-box" style="display:none">
             <div class="plan-price-num">7,999</div>
-            <div class="plan-price-unit">€ /lună retainer</div>
+            <div class="plan-price-unit">€ /mo retainer</div>
           </div>
         </div>
         <hr class="plan-divider">
         <ul class="plan-features">
-          <li>8 reels/lună</li>
-          <li>2 h filmare profesională</li>
-          <li>Un rând de corecții</li>
-          <li>Distribuție social media</li>
-          <li>Lumini, sunet și machiaj</li>
+          <li>8 reels/month</li>
+          <li>2 h professional filming</li>
+          <li>One revision round</li>
+          <li>Social media distribution</li>
+          <li>Lighting, sound & makeup</li>
         </ul>
         <button class="plan-cta" onclick="openModal();trackEvent('cta_click','מתחילים-Business')">
-          Începe →
+          Get Started →
         </button>
       </div>
 
@@ -1206,24 +1192,24 @@ select.form-input { cursor:pointer; }
         <div class="price-reveal-wrap" data-plan="Premium" data-price="9,999">
           <div class="price-hidden-box">
             <div class="price-lock-icon">🔒</div>
-            <div class="price-hidden-label">Prețul este ascuns</div>
-            <button class="price-reveal-btn" onclick="revealPrice(this)">Dezvăluie prețul</button>
+            <div class="price-hidden-label">Price is hidden</div>
+            <button class="price-reveal-btn" onclick="revealPrice(this)">Reveal Price</button>
           </div>
           <div class="price-shown-box" style="display:none">
             <div class="plan-price-num">9,999</div>
-            <div class="plan-price-unit">€ /lună retainer</div>
+            <div class="plan-price-unit">€ /mo retainer</div>
           </div>
         </div>
         <hr class="plan-divider">
         <ul class="plan-features">
-          <li>12 reels/lună</li>
-          <li>4 h filmare profesională</li>
-          <li>2 rânduri de corecții</li>
-          <li>Distribuție social media</li>
-          <li>Management continuu + analiză lunară</li>
+          <li>12 reels/month</li>
+          <li>4 h professional filming</li>
+          <li>2 revision rounds</li>
+          <li>Social media distribution</li>
+          <li>Ongoing management + monthly analysis</li>
         </ul>
         <button class="plan-cta" onclick="openModal();trackEvent('cta_click','מתחילים-Premium')">
-          Începe →
+          Get Started →
         </button>
       </div>
 
@@ -1239,10 +1225,10 @@ select.form-input { cursor:pointer; }
     <div class="section-eyebrow fade-up">
       <span class="eyebrow-num">05</span>
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-label">Filosofia noastră</span>
+      <span class="eyebrow-label">Our philosophy</span>
     </div>
-    <h2 class="section-title fade-up">3 instrumente <em style="font-style:italic;color:var(--red)">pentru succes</em></h2>
-    <div class="values-grid"><div class="value-item fade-up"><div class="value-num">01</div><div class="value-title">Adevăr</div><div class="value-line"></div><div class="value-desc">Conținutul care vine dintr-un loc autentic conectează. Nu producem conținut – spunem o poveste reală care servește brandul tău.</div></div><div class="value-item fade-up"><div class="value-num">02</div><div class="value-title">Perseverență</div><div class="value-line"></div><div class="value-desc">Algoritmii iubesc consecvența. Retenție lunară = prezență constantă = creștere reală pe termen lung.</div></div><div class="value-item fade-up"><div class="value-num">03</div><div class="value-title">Valoare</div><div class="value-line"></div><div class="value-desc">Fiecare clip trebuie să creeze valoare reală pentru spectator. Asta transformă conținutul într-un instrument de marketing care produce rezultate.</div></div></div>
+    <h2 class="section-title fade-up">3 tools for <em style="font-style:italic;color:var(--red)">success</em></h2>
+    <div class="values-grid"><div class="value-item fade-up"><div class="value-num">01</div><div class="value-title">Truth</div><div class="value-line"></div><div class="value-desc">Content that comes from an authentic place connects. We don't produce content — we tell a real story that serves your brand.</div></div><div class="value-item fade-up"><div class="value-num">02</div><div class="value-title">Persistence</div><div class="value-line"></div><div class="value-desc">Algorithms love consistency. Monthly retainer = constant presence = real long-term growth.</div></div><div class="value-item fade-up"><div class="value-num">03</div><div class="value-title">Value</div><div class="value-line"></div><div class="value-desc">Every clip must create real value for the viewer. That's what turns content into a marketing tool that produces results.</div></div></div>
 </section>
 
 <hr class="divider">
@@ -1253,42 +1239,42 @@ select.form-input { cursor:pointer; }
     <div class="section-eyebrow fade-up">
       <span class="eyebrow-num">06</span>
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-label">De ce noi</span>
+      <span class="eyebrow-label">Why us</span>
     </div>
     <div class="why-grid">
       <div class="why-items fade-up">
         <div class="why-item">
           <div class="why-icon-box">⚔️</div>
           <div class="why-item-content">
-            <div class="why-item-title">Strategie completă</div>
-            <div class="why-item-desc">Nu doar producem — planificăm întregul traseu de marketing al conținutului tău.</div>
+            <div class="why-item-title">Full Strategy</div>
+            <div class="why-item-desc">We don't just produce — we plan the entire marketing journey of your content.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-icon-box">🎯</div>
           <div class="why-item-content">
-            <div class="why-item-title">Producție cinematografică</div>
-            <div class="why-item-desc">Echipament profesional, lumini, sunet — fiecare clip arată ca un film.</div>
+            <div class="why-item-title">Cinematic Production</div>
+            <div class="why-item-desc">Professional equipment, lighting, sound — every clip looks like a film.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-icon-box">🎬</div>
           <div class="why-item-content">
-            <div class="why-item-title">Distribuție inteligentă</div>
-            <div class="why-item-desc">Editare profesională, Branding unitar și material video din baze de date.</div>
+            <div class="why-item-title">Smart Distribution</div>
+            <div class="why-item-desc">Professional editing, Unified branding and stock footage.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-icon-box">📊</div>
           <div class="why-item-content">
-            <div class="why-item-title">Rezultate măsurabile</div>
-            <div class="why-item-desc">Raport lunar cu cifre reale: vizualizări, reach, engagement și conversii.</div>
+            <div class="why-item-title">Measurable Results</div>
+            <div class="why-item-desc">Monthly report with real numbers: views, reach, engagement and conversions.</div>
           </div>
         </div>
       </div>
       <div class="why-right fade-up">
-        <div class="why-big-text">Nu concurăm la preț —<br><em>rezultate.</em></div>
-        <p class="why-note">Fiecare leu investit în Samurai este un leu care lucrează pentru tine 24/7 pe rețelele sociale.</div>
+        <div class="why-big-text">We don't compete on price —<br><em>results.</em></div>
+        <p class="why-note">Every dollar invested in Samurai is a dollar working for you 24/7 on social media.</div>
       </div>
     </div>
   </div>
@@ -1302,7 +1288,7 @@ select.form-input { cursor:pointer; }
     <div class="section-eyebrow" style="justify-content:center;margin-bottom:0;">
       <span class="eyebrow-num">07</span>
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-label">Clienți</span>
+      <span class="eyebrow-label">Clients</span>
       <span class="eyebrow-line"></span>
     </div>
     <div class="clients-row">
@@ -1322,18 +1308,18 @@ select.form-input { cursor:pointer; }
     <div class="section-eyebrow fade-up">
       <span class="eyebrow-num">08</span>
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-label">Note Finale</span>
+      <span class="eyebrow-label">Fine Print</span>
     </div>
-    <h2 class="section-title fade-up">Ce este inclus în<br><em style="font-style:italic;color:var(--red)">toate pachetele</em></h2>
-    <div class="fine-grid fade-up"><div class="fine-item"><span class="fine-check">✓</span>Filmare profesională cu lumini, sunet și machiaj inclusiv</div><div class="fine-item"><span class="fine-check">✓</span>Publicare directă pe până la 4 platforme sociale</div><div class="fine-item"><span class="fine-check">✓</span>Branding grafic unitar + playlist-uri + thumbnail-uri</div><div class="fine-item"><span class="fine-check">✓</span>Strategie de conținut adaptată obiectivelor de marketing</div><div class="fine-item"><span class="fine-check">✓</span>Management continuu — publicare, tag-uri, titluri și descrieri</div><div class="fine-item"><span class="fine-check">✓</span>Raport statistic lunar prin email</div><div class="fine-item"><span class="fine-check">✓</span>Cost de onboarding unic la începutul colaborării</div><div class="fine-item"><span class="fine-check">✓</span>Prețul nu include actori, influenceri sau animații</div></div>
+    <h2 class="section-title fade-up">What's included in<br><em style="font-style:italic;color:var(--red)">all plans</em></h2>
+    <div class="fine-grid fade-up"><div class="fine-item"><span class="fine-check">✓</span>Professional filming with lighting, sound and makeup included</div><div class="fine-item"><span class="fine-check">✓</span>Direct publishing to up to 4 social platforms</div><div class="fine-item"><span class="fine-check">✓</span>Unified graphic branding + playlists + thumbnails</div><div class="fine-item"><span class="fine-check">✓</span>Content strategy tailored to marketing goals</div><div class="fine-item"><span class="fine-check">✓</span>Ongoing management — uploads, tags, titles and descriptions</div><div class="fine-item"><span class="fine-check">✓</span>Monthly statistical report by email</div><div class="fine-item"><span class="fine-check">✓</span>One-time onboarding fee at the start of collaboration</div><div class="fine-item"><span class="fine-check">✓</span>Price does not include actors, influencers or animations</div></div>
 </section>
 
 <!-- ══ CTA ══ -->
 <div id="cta">
   <div class="cta-inner fade-up">
     <div class="cta-eyebrow">THESAMURAI.RO</div>
-    <h2 class="cta-title"><em>Hai!</em></div>
-    <div class="cta-note">* Fără angajamente. Primul apel este gratuit.</div>
+    <h2 class="cta-title"><em>Let's go!</em></div>
+    <div class="cta-note">* No commitments. First call is free.</div>
   </div>
 </div>
 
@@ -1343,7 +1329,7 @@ select.form-input { cursor:pointer; }
     <div>
       <div class="footer-logo-text">The Samurai</div>
       <div class="footer-domain">thesamurai.ro</div>
-      <div class="footer-tagline">Agenție video scurt</div>
+      <div class="footer-tagline">Short video agency</div>
     </div>
     <div>
       <div class="footer-col-title">Contact</div>
@@ -1358,11 +1344,11 @@ select.form-input { cursor:pointer; }
       </a>
     </div>
     <div>
-      <div class="footer-col-title">Navigare</div>
-      <a href="#portfolio" class="footer-link">Lucrări</a>
-      <a href="#manifesto" class="footer-link">Despre</a>
-      <a href="#process" class="footer-link">Cum lucrăm</a>
-      <a href="#plans" class="footer-link">Pachete</a>
+      <div class="footer-col-title">Navigation</div>
+      <a href="#portfolio" class="footer-link">Work</a>
+      <a href="#manifesto" class="footer-link">About</a>
+      <a href="#process" class="footer-link">How we work</a>
+      <a href="#plans" class="footer-link">Plans</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1394,7 +1380,7 @@ function trackEvent(type,label){
   d.pageViews=(d.pageViews||0)+1;
   d.lastVisit=new Date().toISOString();
   d.sessions=d.sessions||[];
-  d.sessions.unshift({ts:Date.now(),date:new Date().toLocaleDateString('he-IL'),time:new Date().toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'}),ua:navigator.userAgent.includes('Mobile')?'mobil':'desktop',lang:navigator.language});
+  d.sessions.unshift({ts:Date.now(),date:new Date().toLocaleDateString('he-IL'),time:new Date().toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'}),ua:navigator.userAgent.includes('Mobile')?'mobile':'desktop',lang:navigator.language});
   if(d.sessions.length>100)d.sessions=d.sessions.slice(0,100);
   d.sectionViews=d.sectionViews||{};
   saveAData(d);
@@ -1438,7 +1424,7 @@ document.getElementById('modalOverlay').addEventListener('click',e=>{
 function submitForm(){
   const name=document.getElementById('formName').value.trim();
   const phone=document.getElementById('formPhone').value.trim();
-  if(!name||!phone){alert('Completați numele și telefonul');return;}
+  if(!name||!phone){alert('Please fill in name and phone');return;}
   document.getElementById('modalForm').style.display='none';
   document.getElementById('modalSuccess').classList.add('show');
   trackEvent('form_submit','contact-form');
@@ -1509,8 +1495,8 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 
 // ── ADMIN DATA INJECTION ──
 (function applyAdminData(){
-  // This is a RO page - skip text overrides from admin localStorage
-  const PAGE_LANG = 'ro';
+  // This is a EN page - skip text overrides from admin localStorage
+  const PAGE_LANG = 'en';
   const SUPA_URL='https://wxszxacuuzmfsfsybrbf.supabase.co';
   const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind4c3p4YWN1dXptZnNmc3licmJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzMjQxNTEsImV4cCI6MjA5MzkwMDE1MX0.kq8KOBwNoPTn5Z7RGhvFJOgdCtZfHeUN06o6CiDwe0k';
   
@@ -1647,7 +1633,7 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
     if(!trk)return;
     const bgColors=['linear-gradient(160deg,#1a0a00,#3d1200,#000)','linear-gradient(160deg,#000a1a,#002244,#000)','linear-gradient(160deg,#0a0a00,#2a2200,#000)','linear-gradient(160deg,#0a0010,#1a0035,#000)','linear-gradient(160deg,#0a0000,#2d0000,#000)','linear-gradient(160deg,#001a0a,#003320,#000)','linear-gradient(160deg,#1a1000,#332200,#000)','linear-gradient(160deg,#001010,#002233,#000)','linear-gradient(160deg,#100010,#220033,#000)','linear-gradient(160deg,#0a0a0a,#1a1a1a,#000)'];
     const reels=d.reels.slice(0,20);
-    function makeCard(r,idx){let media='';if(r.mediaSrc&&r.mediaType==='video')media=`<video src="${r.mediaSrc}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" muted loop playsinline autoplay></video>`;else if(r.mediaSrc&&r.mediaType==='image')media=`<img src="${r.mediaSrc}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`;return `<div class="reel-card" onclick="trackEvent('reel_click','${r.client}')"><div class="reel-phone"><div class="reel-screen" style="background:${bgColors[idx%bgColors.length]}">${media}<div class="reel-overlay-text"><div class="reel-client">${r.client}</div><div class="reel-desc">${r.desc||''}</div></div><div class="reel-play-btn">&#9658;</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div><div class="reel-meta"><div class="reel-tag">${r.tag||''}</div><div class="reel-stats">${r.views?`<span>${r.views}</span> vizualizări`:''}</div></div></div>`;}
+    function makeCard(r,idx){let media='';if(r.mediaSrc&&r.mediaType==='video')media=`<video src="${r.mediaSrc}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" muted loop playsinline autoplay></video>`;else if(r.mediaSrc&&r.mediaType==='image')media=`<img src="${r.mediaSrc}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">`;return `<div class="reel-card" onclick="trackEvent('reel_click','${r.client}')"><div class="reel-phone"><div class="reel-screen" style="background:${bgColors[idx%bgColors.length]}">${media}<div class="reel-overlay-text"><div class="reel-client">${r.client}</div><div class="reel-desc">${r.desc||''}</div></div><div class="reel-play-btn">&#9658;</div><div class="reel-bars"><span></span><span></span><span></span><span></span><span></span></div></div><div class="phone-notch"></div></div><div class="reel-meta"><div class="reel-tag">${r.tag||''}</div><div class="reel-stats">${r.views?`<span>${r.views}</span> views`:''}</div></div></div>`;}
     trk.innerHTML=reels.map((r,i)=>makeCard(r,i)).join('');
     const dotsContainer=document.getElementById('carouselDots');
     if(dotsContainer){dotsContainer.innerHTML='';trk.querySelectorAll('.reel-card').forEach((_,i)=>{const dot=document.createElement('button');dot.className='carousel-dot'+(i===0?' active':'');dot.addEventListener('click',()=>{ if(typeof goTo==='function') goTo(i); });dotsContainer.appendChild(dot);});}
@@ -1659,187 +1645,6 @@ document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 </script>
 </div><!-- /#site-wrapper -->
 
-
-<script>
-// ── BILINGUAL ENGINE (RO/EN) ──
-const SITE_TRANSLATIONS = {"ro": {"dir": "ltr", "lang": "ro", "page_title": "The Samurai | Agenție Video Scurt", "nav_logo": "The Samurai", "nav_works": "Lucrări", "nav_about": "Despre", "nav_plans": "Pachete", "nav_cta": "Contactează-ne", "lang_current": "RO", "lang_links": "<a href=\"index.html\">עב</a><a href=\"index-en.html\">EN</a>", "hero_label": "THESAMURAI.RO", "hero_title": "The Samurai<br><em style=\"font-style:italic;color:var(--red)\">câștigă</em><br>pentru tine.", "hero_sub": "Nu producem doar video — conducem un proces strategic complet care transformă modul în care brandul tău comunică cu publicul.", "hero_btn1": "Contactează-ne →", "hero_btn2": "Vezi pachetele", "hero_badge": "Short Video Agency", "hero_pill1": "Strategie", "hero_pill2": "Creativ", "hero_pill3": "Producție", "hero_pill4": "Distribuție", "stat1_num": "50", "stat1_suf": "+", "stat1_lbl": "Clienți activi", "stat2_num": "500", "stat2_suf": "+", "stat2_lbl": "Reels produse", "stat3_num": "8", "stat3_suf": "M+", "stat3_lbl": "Vizualizări totale", "stat4_num": "3", "stat4_suf": "", "stat4_lbl": "Instrumente: Adevăr · Perseverență · Valoare", "ticker": "Strategie · Marketing · Creativ · Producție · Short Format · Instagram Reels · TikTok · YouTube Shorts · Retenție lunară", "portfolio_eyebrow": "Lucrări selectate", "portfolio_title": "<em style=\"font-style:italic;color:var(--red)\">Exemple</em> din teren", "manifesto_eyebrow": "Despre noi", "manifesto_q": "Când rețelele sunt arena,<br><em>videoul este regele.</em>", "manifesto_p1": "The Samurai stă în fruntea bătăliei tale de marketing, protejând brandul tău, ascuțind mesajul și conducându-te înainte cu claritate și precizie.", "manifesto_p2": "Nu creăm doar conținut video – planificăm mișcările, formulăm strategia, îndreptăm sabia și ne asigurăm că fiecare clip lovește exact unde trebuie.", "manifesto_p3": "Nu ești singur – suntem Samurai-ul tău, luptând pentru tine, gândind pentru tine, câștigând pentru tine.", "manifesto_tags": ["Strateg", "Creativ", "Producător", "Regizor"], "process_eyebrow": "Cum lucrăm", "process_title": "Procesul nostru", "proc": [["Briefing strategic", "Înțelegem brandul, publicul și obiectivele de marketing."], ["Concept & scenariu", "Creăm conceptul creativ și scriptul fiecărui clip."], ["Filmare profesională", "Filmare cu echipament profesional, lumini și sunet."], ["Editare & branding", "Editare, subtitrări, grafică și identitate vizuală unitară."], ["Distribuție & analiză", "Publicare pe platforme și raport lunar de performanță."]], "plans_eyebrow": "Pachete", "plans_title": "Alege pachetul <em style=\"font-style:italic;color:var(--red)\">tău</em>", "plans_note": "Toate pachetele includ brief lunar, strategie, creație, producție și distribuție.", "plans_min": "Minim 3 luni · Fără TVA", "plan_names": ["De Bază", "Business", "Premium"], "plan_prices": ["5,999", "7,999", "9,999"], "plan_currency": "€", "plan_period": "/lună retainer", "price_hidden_label": "Prețul este ascuns", "reveal_btn": "Dezvăluie prețul", "plan_recommended": "Recomandat", "plan_features": [["4 reels/lună", "Material brut de la client", "Un rând de corecții", "Editare profesională + subtitrări", "Branding unitar"], ["8 reels/lună", "4h filmare profesională", "Un rând de corecții", "Distribuție pe social media", "Lumini, sunet și machiaj"], ["12 reels/lună", "8h filmare profesională", "2 rânduri de corecții", "Distribuție pe social media", "Management continuu + analiză lunară"]], "plan_cta": ["Începe →", "Începe →", "Începe →"], "values_eyebrow": "Filosofia noastră", "values_title": "3 instrumente <em style=\"font-style:italic;color:var(--red)\">pentru succes</em>", "values": [["01", "Adevăr", "Conținutul care vine dintr-un loc autentic conectează. Nu producem conținut – spunem o poveste reală care servește brandul tău."], ["02", "Perseverență", "Algoritmii iubesc consecvența. Retenție lunară = prezență constantă = creștere reală pe termen lung."], ["03", "Valoare", "Fiecare clip trebuie să creeze valoare reală pentru spectator. Asta transformă conținutul într-un instrument de marketing care produce rezultate."]], "why_eyebrow": "De ce noi", "why_big": "Nu concurăm la preț —<br><em>rezultate.</em>", "why_note": "Fiecare leu investit în Samurai este un leu care lucrează pentru tine 24/7 pe rețelele sociale.", "why_items": [["Strategie completă", "Nu doar producem — planificăm întregul traseu de marketing al conținutului tău."], ["Producție cinematografică", "Echipament profesional, lumini, sunet — fiecare clip arată ca un film."], ["Distribuție inteligentă", "Știm când, unde și cum să publicăm pentru maximum de impact."], ["Rezultate măsurabile", "Raport lunar cu cifre reale: vizualizări, reach, engagement și conversii."]], "clients_eyebrow": "Clienți", "fine_items": ["Filmare profesională cu lumini, sunet și machiaj inclusiv", "Publicare directă pe până la 4 platforme sociale", "Branding grafic unitar + playlist-uri + thumbnail-uri", "Strategie de conținut adaptată obiectivelor de marketing", "Management continuu — publicare, tag-uri, titluri și descrieri", "Raport statistic lunar prin email", "Cost de onboarding unic la începutul colaborării", "Prețul nu include actori, influenceri sau animații"], "cta_big": "<em>Hai!</em>", "cta_sub": "Ești gata să nu mai privești cum concurenții tăi au mai mult succes?", "cta_btn": "Contactează-ne acum →", "cta_note": "* Fără angajamente. Primul apel este gratuit.", "footer_tagline": "Agenție video scurt", "footer_email": "hi@thesamurai.ro", "footer_rights": "© 2025 The Samurai. Toate drepturile rezervate.", "modal_title": "Să vorbim", "modal_sub": "Spune-ne despre proiectul tău", "form_name": "Nume complet", "form_phone": "Telefon", "form_email": "Email", "form_plan": "Alege pachetul", "form_msg": "Spune-ne despre afacerea ta (opțional)", "form_submit": "Trimite →", "form_success": "Mesaj trimis! Te contactăm în curând."}, "en": {"dir": "ltr", "lang": "en", "page_title": "The Samurai | Short Video Agency", "nav_logo": "The Samurai", "nav_works": "Work", "nav_about": "About", "nav_plans": "Plans", "nav_cta": "Let's Talk", "lang_current": "EN", "lang_links": "<a href=\"index.html\">עב</a><a href=\"index-ro.html\">RO</a>", "hero_label": "THESAMURAI.RO", "hero_title": "The Samurai<br><em style=\"font-style:italic;color:var(--red)\">wins</em><br>for you.", "hero_sub": "We don't just produce video — we lead a full strategic process that transforms how your brand communicates with your audience.", "hero_btn1": "Let's Talk →", "hero_btn2": "See Plans", "hero_badge": "Short Video Agency", "hero_pill1": "Strategy", "hero_pill2": "Creative", "hero_pill3": "Production", "hero_pill4": "Distribution", "stat1_num": "50", "stat1_suf": "+", "stat1_lbl": "Active clients", "stat2_num": "500", "stat2_suf": "+", "stat2_lbl": "Reels produced", "stat3_num": "8", "stat3_suf": "M+", "stat3_lbl": "Total views", "stat4_num": "3", "stat4_suf": "", "stat4_lbl": "Tools for success: Truth · Persistence · Value", "ticker": "Strategy · Marketing · Creative · Production · Short Format · Instagram Reels · TikTok · YouTube Shorts · Monthly retainer", "portfolio_eyebrow": "Selected work", "portfolio_title": "<em style=\"font-style:italic;color:var(--red)\">Examples</em> from the field", "manifesto_eyebrow": "About us", "manifesto_q": "When the feed is the arena,<br><em>video is king.</em>", "manifesto_p1": "The Samurai stands at the front of your marketing battle — protecting your brand, sharpening your message, and leading you forward with clarity and precision.", "manifesto_p2": "We don't just create video content — we plan the moves, craft the strategy, aim the blade, and ensure every clip hits exactly where it should.", "manifesto_p3": "You're not alone — we're your Samurai, fighting for you, thinking for you, winning for you.", "manifesto_tags": ["Strategist", "Creative", "Producer", "Director"], "process_eyebrow": "How we work", "process_title": "Our Process", "proc": [["Strategic Brief", "We understand your brand, audience, and marketing goals."], ["Concept & Script", "We create the creative concept and script for each clip."], ["Professional Filming", "Filming with professional equipment, lighting, and sound."], ["Editing & Branding", "Editing, subtitles, graphics, and consistent visual identity."], ["Distribution & Analysis", "Publishing on platforms and monthly performance report."]], "plans_eyebrow": "Plans", "plans_title": "Choose your <em style=\"font-style:italic;color:var(--red)\">plan</em>", "plans_note": "All plans include monthly brief, strategy, creative, production and distribution.", "plans_min": "Minimum 3 months · Excl. VAT", "plan_names": ["Basic", "Business", "Premium"], "plan_prices": ["5,999", "7,999", "9,999"], "plan_currency": "€", "plan_period": "/mo retainer", "price_hidden_label": "Price is hidden", "reveal_btn": "Reveal Price", "plan_recommended": "Recommended", "plan_features": [["4 reels/month", "Raw footage from client", "One revision round", "Professional editing + subtitles", "Unified branding"], ["8 reels/month", "4h professional filming", "One revision round", "Social media distribution", "Lighting, sound & makeup"], ["12 reels/month", "8h professional filming", "2 revision rounds", "Social media distribution", "Ongoing management + monthly analysis"]], "plan_cta": ["Get Started →", "Get Started →", "Get Started →"], "values_eyebrow": "Our philosophy", "values_title": "3 tools for <em style=\"font-style:italic;color:var(--red)\">success</em>", "values": [["01", "Truth", "Content that comes from an authentic place connects. We don't produce content — we tell a real story that serves your brand."], ["02", "Persistence", "Algorithms love consistency. Monthly retainer = constant presence = real long-term growth."], ["03", "Value", "Every clip must create real value for the viewer. That's what turns content into a marketing tool that produces results."]], "why_eyebrow": "Why us", "why_big": "We don't compete on price —<br><em>results.</em>", "why_note": "Every dollar invested in Samurai is a dollar working for you 24/7 on social media.", "why_items": [["Full Strategy", "We don't just produce — we plan the entire marketing journey of your content."], ["Cinematic Production", "Professional equipment, lighting, sound — every clip looks like a film."], ["Smart Distribution", "We know when, where and how to publish for maximum impact."], ["Measurable Results", "Monthly report with real numbers: views, reach, engagement and conversions."]], "clients_eyebrow": "Clients", "fine_items": ["Professional filming with lighting, sound and makeup included", "Direct publishing to up to 4 social platforms", "Unified graphic branding + playlists + thumbnails", "Content strategy tailored to marketing goals", "Ongoing management — uploads, tags, titles and descriptions", "Monthly statistical report by email", "One-time onboarding fee at the start of collaboration", "Price does not include actors, influencers or animations"], "cta_big": "<em>Let's go!</em>", "cta_sub": "Ready to stop watching your competitors win?", "cta_btn": "Contact us now →", "cta_note": "* No commitments. First call is free.", "footer_tagline": "Short video agency", "footer_email": "hi@thesamurai.ro", "footer_rights": "© 2025 The Samurai. All rights reserved.", "modal_title": "Let's Talk", "modal_sub": "Tell us about your project", "form_name": "Full name", "form_phone": "Phone", "form_plan": "Choose a plan", "form_msg": "Tell us about your business (optional)", "form_submit": "Send →", "form_success": "Message sent! We'll be in touch soon.", "form_email": "Email"}};
-let CURRENT_LANG = localStorage.getItem('samurai_lang_ro') || 'ro';
-
-function setLang(lang) {
-  CURRENT_LANG = lang;
-  localStorage.setItem('samurai_lang_ro', lang);
-  // Merge static translations with admin-saved data
-  const baseT = SITE_TRANSLATIONS[lang] || {};
-  // Get admin data from localStorage
-  let adminData = {};
-  try { adminData = JSON.parse(localStorage.getItem('samurai_site_data') || '{}'); } catch(e) {}
-  // For RO: use adminData directly; for EN: use adminData.translations.en
-  const langData = lang === 'ro' ? adminData : (adminData.translations?.en || {});
-  // Build merged translation: admin data takes priority over static
-  const t = Object.assign({}, baseT);
-  // Override with admin saved texts
-  if (langData.heroTexts?.line1) { t.hero_line1 = langData.heroTexts.line1; t.hero_line2 = langData.heroTexts.line2; t.hero_line3 = langData.heroTexts.line3; t.hero_sub = langData.heroTexts.desc; t.hero_btn1 = langData.heroTexts.btnPrimary; t.hero_btn2 = langData.heroTexts.btnSecondary; }
-  if (langData.manifesto?.p1) { t.manifesto_p1 = langData.manifesto.p1; t.manifesto_p2 = langData.manifesto.p2; t.manifesto_p3 = langData.manifesto.p3; t.manifesto_q1 = langData.manifesto.line1; t.manifesto_q2 = langData.manifesto.line2; }
-  if (langData.statsTexts?.length) { langData.statsTexts.forEach((s,i)=>{ t['stat'+(i+1)+'_num']=s.num; t['stat'+(i+1)+'_suf']=s.suffix||''; t['stat'+(i+1)+'_lbl']=s.label; }); }
-  if (langData.process?.length) { t.proc = langData.process.map(p => [p.title, p.desc]); }
-  if (langData.values?.length) { t.values = langData.values.map(v => [v.num, v.title, v.desc]); }
-  if (langData.why?.items?.length) { t.why_items = langData.why.items.map(w => [w.title, w.desc]); }
-  if (langData.whyTexts?.bigLine1) { t.why_big = langData.whyTexts.bigLine1 + '<br><em>' + langData.whyTexts.bigLine2 + '</em>'; t.why_note = langData.whyTexts.note; }
-  if (langData.fineItems?.length) { t.fine_items = langData.fineItems; }
-  if (langData.tickerItems?.length) { t.ticker = langData.tickerItems.join(' · '); }
-  if (langData.cta?.big) { t.cta_big = '<em>' + langData.cta.big + '</em>'; t.cta_sub = langData.cta.sub; t.cta_btn = langData.cta.btnText; }
-  if (!t) return;
-
-  // Direction
-  document.documentElement.lang = t.lang;
-  document.documentElement.dir = t.dir;
-  document.body.dir = t.dir;
-
-  // Active button
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-
-  // Nav
-  const logo = document.querySelector('.nav-logo'); if (logo) logo.textContent = t.nav_logo;
-  const works = document.querySelector('a[href="#portfolio"].nav-link'); if (works) works.textContent = t.nav_works;
-  const about = document.querySelector('a[href="#manifesto"].nav-link'); if (about) about.textContent = t.nav_about;
-  const plans = document.querySelector('a[href="#plans"].nav-link'); if (plans) plans.textContent = t.nav_plans;
-  const cta = document.querySelector('.nav-cta-btn'); if (cta) cta.textContent = t.nav_cta;
-
-  // Hero
-  const label = document.querySelector('.hero-label'); if (label) label.textContent = t.hero_label;
-  const ht = document.querySelector('.hero-title'); if (ht) ht.innerHTML = t.hero_line1 + '<br><em style="font-style:italic;color:var(--red)">' + t.hero_line2 + '</em><br>' + t.hero_line3;
-  const sub = document.querySelector('.hero-sub'); if (sub) sub.textContent = t.hero_sub;
-  const btn1 = document.querySelector('.hero-actions .btn-primary'); if (btn1) btn1.textContent = t.hero_btn1;
-  const btn2 = document.querySelector('.hero-actions .btn-ghost'); if (btn2) btn2.textContent = t.hero_btn2;
-  const badge = document.querySelector('.hero-badge'); if (badge) badge.textContent = t.hero_badge;
-  const pills = document.querySelector('.hero-pills');
-  if (pills) pills.innerHTML = [t.hero_pill1, t.hero_pill2, t.hero_pill3, t.hero_pill4].map(p => '<span class="hero-pill">' + p + '</span>').join('');
-
-  // Stats
-  const statItems = document.querySelectorAll('.hero-stat');
-  [{}: 'stat1', 1: 'stat2', 2: 'stat3', 3: 'stat4'].forEach((_, i) => {
-    const el = statItems[i]; if (!el) return;
-    const num = el.querySelector('.hero-stat-num');
-    if (num) num.innerHTML = t['stat'+(i+1)+'_num'] + '<span>' + t['stat'+(i+1)+'_suf'] + '</span>';
-    const lbl = el.querySelector('.hero-stat-label');
-    if (lbl) lbl.textContent = t['stat'+(i+1)+'_lbl'];
-  });
-
-  // Ticker
-  const ticker = document.getElementById('tickerTrack');
-  if (ticker) {
-    const items = t.ticker.split(' · ');
-    ticker.innerHTML = [...items, ...items].map(x => '<span class="ticker-item">' + x + '</span>').join('');
-  }
-
-  // Section eyebrows
-  const setEyebrow = (id, val) => { const el = document.querySelector('#' + id + ' .eyebrow-label'); if (el) el.textContent = val; };
-  setEyebrow('portfolio', t.portfolio_eyebrow);
-  setEyebrow('manifesto', t.manifesto_eyebrow);
-  setEyebrow('process', t.process_eyebrow);
-  setEyebrow('plans', t.plans_eyebrow);
-  setEyebrow('values', t.values_eyebrow);
-  setEyebrow('why', t.why_eyebrow);
-  setEyebrow('clients', t.clients_eyebrow);
-
-  // Portfolio title
-  const portTitle = document.querySelector('#portfolio .section-title');
-  if (portTitle) portTitle.innerHTML = '<em style="font-style:italic;color:var(--red)">' + t.portfolio_title1 + '</em> ' + t.portfolio_title2;
-
-  // Process title
-  const procTitle = document.querySelector('#process .section-title');
-  if (procTitle) procTitle.textContent = t.process_title;
-
-  // Plans title
-  const plansTitle = document.querySelector('#plans .section-title');
-  if (plansTitle) plansTitle.innerHTML = t.plans_title1 + ' <em style="font-style:italic;color:var(--red)">' + t.plans_title2 + '</em>';
-
-  // Manifesto
-  const manQ = document.querySelector('.manifesto-quote');
-  if (manQ) manQ.innerHTML = t.manifesto_q1 + '<br><em>' + t.manifesto_q2 + '</em>';
-  const manPs = document.querySelectorAll('.manifesto-text p');
-  if (manPs[0]) manPs[0].textContent = t.manifesto_p1;
-  if (manPs[1]) manPs[1].textContent = t.manifesto_p2;
-  if (manPs[2]) manPs[2].textContent = t.manifesto_p3;
-  const manTags = document.querySelector('.manifesto-tag-row');
-  if (manTags) manTags.innerHTML = t.manifesto_tags.map(tag => '<span class="manifesto-tag">' + tag + '</span>').join('');
-
-  // Process steps
-  const procSteps = document.querySelectorAll('.process-step');
-  t.proc.forEach(([title, desc], i) => {
-    const el = procSteps[i]; if (!el) return;
-    const tt = el.querySelector('.process-step-title'); if (tt) tt.textContent = title;
-    const dd = el.querySelector('.process-step-desc'); if (dd) dd.textContent = desc;
-  });
-
-  // Plans
-  const planCols = document.querySelectorAll('.plan-col');
-  t.plan_names.forEach((name, i) => {
-    const el = planCols[i]; if (!el) return;
-    const nm = el.querySelector('.plan-name'); if (nm) nm.textContent = name;
-    const wrap = el.querySelector('.price-reveal-wrap');
-    if (wrap) {
-      wrap.dataset.plan = name;
-      const price = t.plan_prices[i];
-      wrap.dataset.price = price;
-      const shown = wrap.querySelector('.plan-price-num'); if (shown) shown.textContent = price;
-      const unit = wrap.querySelector('.plan-price-unit'); if (unit) unit.textContent = t.plan_period;
-      const hidLabel = wrap.querySelector('.price-hidden-label'); if (hidLabel) hidLabel.textContent = t.price_hidden_label;
-      const revBtn = wrap.querySelector('.reveal-btn'); if (revBtn) revBtn.textContent = t.reveal_btn;
-    }
-    const feats = el.querySelector('.plan-features');
-    if (feats && t.plan_features[i]) feats.innerHTML = t.plan_features[i].map(f => '<li>✓ ' + f + '</li>').join('');
-    const planCta = el.querySelector('.plan-cta'); if (planCta) planCta.textContent = t.plan_cta[i];
-    const rec = el.querySelector('.plan-recommended, .plan-featured-tag'); if (rec) rec.textContent = t.plan_recommended;
-  });
-
-  // Values
-  const valTitle = document.querySelector('#values .section-title');
-  if (valTitle) valTitle.innerHTML = t.values_title;
-  const valItems = document.querySelectorAll('.value-item');
-  t.values.forEach(([num, title, desc], i) => {
-    const el = valItems[i]; if (!el) return;
-    const vt = el.querySelector('.value-title'); if (vt) vt.textContent = title;
-    const vd = el.querySelector('.value-desc'); if (vd) vd.textContent = desc;
-  });
-
-  // Why
-  const whyBig = document.querySelector('.why-big-text');
-  if (whyBig) whyBig.innerHTML = t.why_big;
-  const whyNote = document.querySelector('.why-note'); if (whyNote) whyNote.textContent = t.why_note;
-  const whyItems = document.querySelectorAll('.why-item');
-  t.why_items.forEach(([wt, wd], i) => {
-    const el = whyItems[i]; if (!el) return;
-    const tt = el.querySelector('.why-item-title'); if (tt) tt.textContent = wt;
-    const dd = el.querySelector('.why-item-desc'); if (dd) dd.textContent = wd;
-  });
-
-  // Fine print
-  const fineGrid = document.querySelector('.fine-grid');
-  if (fineGrid) fineGrid.innerHTML = t.fine_items.map(item => '<div class="fine-item"><span class="fine-check">✓</span>' + item + '</div>').join('');
-
-  // CTA
-  const ctaTitle = document.querySelector('.cta-title'); if (ctaTitle) ctaTitle.innerHTML = t.cta_big;
-  const ctaSub = document.querySelector('.cta-sub'); if (ctaSub) ctaSub.textContent = t.cta_sub;
-  const ctaBtn = document.querySelector('.cta-actions .btn-primary'); if (ctaBtn) ctaBtn.textContent = t.cta_btn;
-
-  // Footer
-  const footerTagline = document.querySelector('.footer-tagline'); if (footerTagline) footerTagline.textContent = t.footer_tagline;
-
-  // Modal
-  const modTitle = document.querySelector('.modal-title'); if (modTitle) modTitle.textContent = t.modal_title;
-  const modSub = document.querySelector('.modal-sub'); if (modSub) modSub.textContent = t.modal_sub;
-  // Form labels
-  const formLabels = document.querySelectorAll('.form-label');
-  const labelKeys = ['form_name', 'form_phone', 'form_email', 'form_plan', 'form_msg'];
-  // Submit btn
-  const submitBtn = document.getElementById('submitBtn'); if (submitBtn) submitBtn.textContent = t.form_submit;
-  // Floating CTA
-  const floatBtn = document.getElementById('floatingCta'); if (floatBtn) floatBtn.textContent = t.nav_cta;
-}
-
-document.addEventListener('DOMContentLoaded', () => setLang(CURRENT_LANG));
-</script>
 </body>
 </html><div class="hero-badge">Short Video Agency</div>
   </div>
